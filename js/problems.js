@@ -32,13 +32,13 @@ const problemBank = {
                 "definite integrals", "indefinite integrals", "integration by parts",
                 "substitution method", "limits", "continuity", "trigonometric derivatives",
                 "exponential derivatives", "logarithmic derivatives", "fundamental theorem",
-                "Taylor series", "infinite series", "convergence", "divergence"
+                "taylor series", "infinite series", "convergence", "divergence"
             ],
             geometry: [
                 "area", "perimeter", "volume", "surface area", "triangles", "rectangles",
                 "circles", "polygons", "coordinate geometry", "distance formula",
                 "midpoint formula", "slope", "parallel lines", "perpendicular lines",
-                "angles", "similar triangles", "congruent triangles", "Pythagorean theorem",
+                "angles", "similar triangles", "congruent triangles", "pythagorean theorem",
                 "trigonometry", "sine", "cosine", "tangent", "proofs"
             ],
             trigonometry: [
@@ -50,13 +50,13 @@ const problemBank = {
                 "matrices", "determinant", "eigenvalues", "eigenvectors", "matrix operations",
                 "matrix multiplication", "inverse matrix", "linear transformations",
                 "vector spaces", "basis", "dimension", "linear independence",
-                "systems of linear equations", "Gaussian elimination", "rank"
+                "systems of linear equations", "gaussian elimination", "rank"
             ],
             probability: [
                 "basic probability", "conditional probability", "independent events",
                 "mutually exclusive events", "combinations", "permutations",
                 "probability distributions", "normal distribution", "binomial distribution",
-                "expected value", "variance", "standard deviation", "Bayes theorem"
+                "expected value", "variance", "standard deviation", "bayes theorem"
             ],
             statistics: [
                 "mean", "median", "mode", "range", "variance", "standard deviation",
@@ -74,46 +74,46 @@ const problemBank = {
         physics: {
             mechanics: [
                 "kinematics", "dynamics", "force", "acceleration", "velocity", "displacement",
-                "Newton's laws", "friction", "circular motion", "projectile motion",
+                "newton's laws", "friction", "circular motion", "projectile motion",
                 "work", "energy", "kinetic energy", "potential energy", "momentum",
                 "impulse", "conservation laws", "collisions", "rotational motion",
                 "torque", "angular momentum", "simple harmonic motion", "oscillations"
             ],
             electromagnetism: [
                 "electric field", "electric potential", "capacitance", "current",
-                "resistance", "Ohm's law", "circuits", "magnetic field",
-                "electromagnetic induction", "Faraday's law", "Lenz's law",
-                "Maxwell's equations", "electromagnetic waves", "AC circuits",
-                "DC circuits", "transformers", "generators", "motors"
+                "resistance", "ohm's law", "circuits", "magnetic field",
+                "electromagnetic induction", "faraday's law", "lenz's law",
+                "maxwell's equations", "electromagnetic waves", "ac circuits",
+                "dc circuits", "transformers", "generators", "motors"
             ],
             thermodynamics: [
                 "temperature", "heat", "thermal equilibrium", "first law",
                 "second law", "entropy", "enthalpy", "heat engines", "refrigerators",
-                "Carnot cycle", "ideal gas", "kinetic theory", "phase transitions",
+                "carnot cycle", "ideal gas", "kinetic theory", "phase transitions",
                 "specific heat", "thermal expansion", "heat transfer"
             ],
             optics: [
-                "reflection", "refraction", "Snell's law", "total internal reflection",
+                "reflection", "refraction", "snell's law", "total internal reflection",
                 "lenses", "mirrors", "ray optics", "wave optics", "interference",
                 "diffraction", "polarization", "optical instruments", "dispersion",
                 "electromagnetic spectrum", "photons", "wave-particle duality"
             ],
             quantum: [
-                "quantum mechanics", "wave function", "Schrödinger equation",
+                "quantum mechanics", "wave function", "schrödinger equation",
                 "uncertainty principle", "quantum states", "observables",
                 "measurement", "superposition", "entanglement", "particle in a box",
                 "harmonic oscillator", "hydrogen atom", "spin", "angular momentum",
-                "photon energy", "photoelectric effect", "Compton scattering"
+                "photon energy", "photoelectric effect", "compton scattering"
             ],
             relativity: [
                 "special relativity", "general relativity", "time dilation",
-                "length contraction", "mass-energy equivalence", "Lorentz transformation",
+                "length contraction", "mass-energy equivalence", "lorentz transformation",
                 "spacetime", "four-vectors", "gravitational waves", "black holes",
                 "cosmology", "reference frames", "simultaneity"
             ],
             waves: [
                 "wave equation", "frequency", "wavelength", "amplitude", "phase",
-                "interference", "standing waves", "resonance", "Doppler effect",
+                "interference", "standing waves", "resonance", "doppler effect",
                 "sound waves", "electromagnetic waves", "wave speed",
                 "mechanical waves", "transverse waves", "longitudinal waves"
             ]
