@@ -295,12 +295,25 @@ h1 {
     margin-bottom: 10px;
 }
 
-.category h3:first-of-type {
-    color: var(--color-c);
+/* Mathematics header */
+.category:first-child h3 {
+    color: var(--color-d);
 }
 
-.category h3:last-of-type {
-    color: var(--color-c);
+/* Physics header */
+.category:last-child h3 {
+    color: var(--color-d);
+}
+
+/* Subject topic buttons (algebra, calculus, mechanics, etc.) */
+.subject-btn {
+    background-color: var(--button-secondary);
+    color: white;
+}
+
+.subject-btn:hover {
+    background-color: var(--color-c);
+    opacity: 0.8;
 }
 
 .subject-selection h2 {
@@ -393,18 +406,10 @@ button, .subject-btn {
     transition: all 0.2s;
 }
 
-button:hover, .subject-btn:hover {
-    background-color: #2980b9;
+button:hover {
+    opacity: 0.8;
 }
 
-.subject-btn {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-}
-
-.subject-btn:hover {
-    background-color: var(--hover-color);
-}
 
 /* Problem Container */
 .problem-container {
