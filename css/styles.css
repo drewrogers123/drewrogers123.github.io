@@ -81,14 +81,14 @@
     
     --bg-primary: #282a36;
     --bg-secondary: #44475a;
-    --bg-tertiary: #6272a4;
+    --bg-tertiary: #4e5273;
     
     --text-primary: #f8f8f2;
-    --text-secondary: #6272a4;
+    --text-secondary: #b8c2e0;
     --text-accent: #ff79c6;
     
     --nav-primary: #bd93f9;
-    --nav-secondary: #6272a4;
+    --nav-secondary: #b8c2e0;
     --section-header: #8be9fd;
     
     --interactive-primary: #bd93f9;
@@ -471,15 +471,109 @@ h1 {
     color: var(--section-header);
 }
 
+/* Buttons */
+button, .btn, #submit-answer, #hint-btn, #next-btn, .back-to-subjects, .subject-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--interactive-secondary);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 100px;
+    text-decoration: none;
+}
+
+button:hover:not(:disabled), 
+.btn:hover:not(:disabled), 
+#submit-answer:hover:not(:disabled), 
+#hint-btn:hover:not(:disabled), 
+#next-btn:hover:not(:disabled), 
+.back-to-subjects:hover:not(:disabled),
+.subject-btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:active:not(:disabled), 
+.btn:active:not(:disabled), 
+#submit-answer:active:not(:disabled), 
+#hint-btn:active:not(:disabled), 
+#next-btn:active:not(:disabled), 
+.back-to-subjects:active:not(:disabled),
+.subject-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+button:disabled, 
+.btn:disabled, 
+#submit-answer:disabled, 
+#hint-btn:disabled, 
+#next-btn:disabled, 
+.back-to-subjects:disabled,
+.subject-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+/* Specific button styles */
+#submit-answer {
+    background: var(--success);
+    color: #fff;
+    border: 1px solid var(--success);
+}
+
+#hint-btn {
+    background: var(--warning);
+    color: #000;
+    border: 1px solid var(--warning);
+}
+
+#next-btn {
+    background: var(--info);
+    color: #000;
+    border: 1px solid var(--info);
+}
+
+.back-to-subjects {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    margin-top: 10px;
+}
+
+.back-to-subjects:hover {
+    background: var(--bg-tertiary);
+    color: var(--interactive-primary);
+}
+
 /* Subject topic buttons (algebra, calculus, mechanics, etc.) */
 .subject-btn {
-    background-color: var(--interactive-secondary);
-    color: white;
+    background: var(--interactive-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
 .subject-btn:hover {
-    background-color: var(--interactive-secondary);
-    opacity: 0.8;
+    background: var(--interactive-primary);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .subject-selection h2 {
@@ -612,70 +706,83 @@ button:hover {
 #answer-input {
     flex: 1;
     padding: 12px 15px;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 4px;
     font-size: 16px;
-    background: var(--input-background);
-    color: var(--text-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     font-family: var(--font-family);
+    transition: all 0.2s ease;
+}
+
+#answer-input:focus {
+    outline: none;
+    border-color: var(--interactive-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 /* Feedback */
 .feedback {
-    padding: 20px;
-    border-radius: 8px;
+    padding: 15px 20px;
+    border-radius: 6px;
     margin: 20px 0;
     font-size: 16px;
     transition: all 0.3s ease;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 
 .feedback-message {
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .feedback-message.correct {
-    color: #155724;
+    color: var(--success);
     animation: correctAnswer 0.5s ease;
 }
 
 .feedback-message.incorrect {
-    color: #721c24;
+    color: var(--error);
 }
 
 .correct-answer {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f8f9fa;
+    margin: 12px 0;
+    padding: 12px 15px;
+    background: var(--bg-secondary);
     border-radius: 4px;
-    border-left: 4px solid #6c757d;
+    border-left: 4px solid var(--border-color);
+    color: var(--text-primary);
 }
 
 .correct-answer .answer {
-    font-weight: bold;
-    color: #155724;
+    font-weight: 600;
+    color: var(--success);
 }
 
 .solution {
     margin-top: 15px;
     padding: 15px;
-    background-color: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 6px;
-    border-left: 4px solid #ffc107;
+    border-left: 4px solid var(--interactive-secondary);
+    color: var(--text-primary);
 }
 
 .solution-title {
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #6c757d;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-accent);
 }
 
 .solution-content {
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--text-primary);
 }
 
 .solution-content .katex {
@@ -872,16 +979,16 @@ button:hover {
 .tab-btn {
     flex: 1;
     padding: 15px 20px;
-    background: var(--bg-tertiary);
-    color: var(--nav-secondary);
+    background: var(--bg-secondary);
     border: none;
-    border-radius: 8px 8px 0 0;
-    cursor: pointer;
+    color: var(--text-primary);
     font-size: 16px;
-    font-weight: 500;
-    font-family: var(--font-family);
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    opacity: 0.9;
     border-bottom: 3px solid transparent;
+    font-weight: 400;
 }
 
 .tab-btn:hover {
