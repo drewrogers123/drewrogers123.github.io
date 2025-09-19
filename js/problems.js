@@ -1,7 +1,21 @@
 // Problem database structure
 const problemBank = {
-    // Difficulty levels (1-10, where 1 is easiest)
-    difficultyLevels: 10,
+    // Skill difficulty levels (1-100, where 1 is easiest)
+    difficultyLevels: 100,
+    
+    // Educational level mappings for skill difficulty
+    educationalLevels: {
+        elementary: { min: 1, max: 10, name: "Elementary" },
+        middleSchool: { min: 11, max: 20, name: "Middle School" },
+        highSchool: { min: 21, max: 30, name: "High School" },
+        advancedHighSchool: { min: 31, max: 40, name: "Advanced High School" },
+        earlyCollege: { min: 41, max: 50, name: "Early College" },
+        middleCollege: { min: 51, max: 60, name: "Middle College" },
+        lateCollege: { min: 61, max: 70, name: "Late College/Early Graduate" },
+        graduate: { min: 71, max: 80, name: "Graduate Level" },
+        phdQualifying: { min: 81, max: 90, name: "PhD Qualifying Exam" },
+        research: { min: 91, max: 100, name: "Research Level" }
+    },
     
     // Problem templates by subject and topic
     problems: {
@@ -9,7 +23,7 @@ const problemBank = {
             algebra: [
                 {
                     id: 'alg1',
-                    difficulty: 1,
+                    difficulty: 15,
                     question: "Solve for x: $2x + 5 = 15$",
                     answer: "5",
                     solution: "Subtract 5 from both sides: $2x = 10$. Then divide both sides by 2: $x = 5$.",
@@ -17,7 +31,7 @@ const problemBank = {
                 },
                 {
                     id: 'alg2',
-                    difficulty: 3,
+                    difficulty: 25,
                     question: "Factor the quadratic: $x^2 - 5x + 6$",
                     answer: "(x-2)(x-3)",
                     solution: "Find two numbers that multiply to 6 and add to -5. The numbers are -2 and -3, so the factored form is $(x-2)(x-3)$.",
@@ -27,7 +41,7 @@ const problemBank = {
             calculus: [
                 {
                     id: 'calc1',
-                    difficulty: 2,
+                    difficulty: 45,
                     question: "Find the derivative of $f(x) = 3x^2 + 2x - 5$",
                     answer: "6x + 2",
                     solution: "Apply the power rule to each term: $\\frac{d}{dx}(3x^2) = 6x$, $\\frac{d}{dx}(2x) = 2$, $\\frac{d}{dx}(-5) = 0$. So, $f'(x) = 6x + 2$.",
@@ -39,7 +53,7 @@ const problemBank = {
             mechanics: [
                 {
                     id: 'mech1',
-                    difficulty: 2,
+                    difficulty: 25,
                     question: "A car accelerates from rest at $2 \\text{ m/s}^2$ for 5 seconds. What is its final velocity?",
                     answer: "10",
                     units: "m/s",
@@ -52,7 +66,7 @@ const problemBank = {
     
     // User progress tracking
     userProgress: {
-        currentDifficulty: 1,
+        currentDifficulty: 15,
         correctCount: 0,
         incorrectCount: 0,
         currentStreak: 0,
@@ -60,6 +74,16 @@ const problemBank = {
         lastSubject: null,
         lastTopic: null,
         problemHistory: []
+    },
+    
+    // Get educational level name for a given difficulty
+    getEducationalLevel: function(difficulty) {
+        for (const [key, level] of Object.entries(this.educationalLevels)) {
+            if (difficulty >= level.min && difficulty <= level.max) {
+                return level.name;
+            }
+        }
+        return "Unknown Level";
     },
     
     // Get a random problem based on current difficulty and topic
@@ -88,9 +112,9 @@ const problemBank = {
             });
         }
         
-        // Filter problems within ±2 difficulty levels of current
-        const minDifficulty = Math.max(1, this.userProgress.currentDifficulty - 2);
-        const maxDifficulty = Math.min(this.difficultyLevels, this.userProgress.currentDifficulty + 2);
+        // Filter problems within ±10 difficulty levels of current (adjusted for 1-100 scale)
+        const minDifficulty = Math.max(1, this.userProgress.currentDifficulty - 10);
+        const maxDifficulty = Math.min(this.difficultyLevels, this.userProgress.currentDifficulty + 10);
         
         const filteredProblems = availableProblems.filter(problem => 
             problem.difficulty >= minDifficulty && problem.difficulty <= maxDifficulty
@@ -132,8 +156,8 @@ const problemBank = {
             
             // Increase difficulty, but cap at max level
             if (this.userProgress.currentDifficulty < this.difficultyLevels) {
-                // Increase more if on a streak
-                const increase = this.userProgress.currentStreak >= 3 ? 2 : 1;
+                // Increase more if on a streak (adjusted for 1-100 scale)
+                const increase = this.userProgress.currentStreak >= 3 ? 5 : 2;
                 this.userProgress.currentDifficulty = Math.min(
                     this.difficultyLevels, 
                     this.userProgress.currentDifficulty + increase
@@ -143,8 +167,8 @@ const problemBank = {
             this.userProgress.incorrectCount++;
             this.userProgress.currentStreak = 0;
             
-            // Decrease difficulty, but don't go below 1
-            this.userProgress.currentDifficulty = Math.max(1, this.userProgress.currentDifficulty - 1);
+            // Decrease difficulty, but don't go below 1 (adjusted for 1-100 scale)
+            this.userProgress.currentDifficulty = Math.max(1, this.userProgress.currentDifficulty - 3);
         }
         
         // Update the UI with new stats
