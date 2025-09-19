@@ -118,9 +118,12 @@ const problemBank = {
     
     // Check if the answer is correct
     checkAnswer: function(problem, userAnswer) {
-        // Simple exact match for now
+        // Normalize answers by removing all whitespace and converting to lower case
+        const normalizedCorrectAnswer = problem.answer.replace(/\s+/g, '').toLowerCase();
+        const normalizedUserAnswer = userAnswer.replace(/\s+/g, '').toLowerCase();
+
         // TODO: Add more sophisticated answer checking (e.g., numerical tolerance, symbolic equivalence)
-        return problem.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+        return normalizedCorrectAnswer === normalizedUserAnswer;
     },
     
     // Update difficulty based on user performance

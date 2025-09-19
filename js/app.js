@@ -64,15 +64,12 @@ class MathPhysicsApp {
         document.getElementById('problem-container').classList.remove('hidden');
         
         // Update category title
-        const subjectName = subjects[subject]?.name || 'Mathematics';
-        let topicName = '';
-        
-        if (subject && topic) {
-            const topicObj = subjects[subject]?.topics.find(t => t.id === topic);
-            topicName = topicObj ? `: ${topicObj.name}` : '';
+        const selectedSubject = subjects.find(s => s.id === topic);
+        if (selectedSubject) {
+            document.getElementById('problem-category').textContent = selectedSubject.name;
+        } else {
+            document.getElementById('problem-category').textContent = 'Practice Problems';
         }
-        
-        document.getElementById('problem-category').textContent = `${subjectName}${topicName}`;
         
         // Load first problem
         this.loadNewProblem();
