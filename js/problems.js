@@ -18,7 +18,7 @@ const problemBank = {
                     id: 'alg2',
                     difficulty: 3,
                     question: "Factor the quadratic expression: $x^2 - 5x + 6$",
-                    answer: "(x-2)(x-3)",
+                    answer: ["(x-2)(x-3)", "(x-3)(x-2)"],
                     solution: "We need two numbers that multiply to 6 and add to -5. These are -2 and -3. So the factored form is $(x-2)(x-3)$."
                 },
                 {
@@ -157,12 +157,16 @@ const problemBank = {
     
     // Check if the answer is correct
     checkAnswer: function(problem, userAnswer) {
-        // Normalize answers by removing all whitespace and converting to lower case
-        const normalizedCorrectAnswer = problem.answer.replace(/\s+/g, '').toLowerCase();
         const normalizedUserAnswer = userAnswer.replace(/\s+/g, '').toLowerCase();
 
-        // TODO: Add more sophisticated answer checking (e.g., numerical tolerance, symbolic equivalence)
-        return normalizedCorrectAnswer === normalizedUserAnswer;
+        if (Array.isArray(problem.answer)) {
+            // If the answer is an array, check if the user's answer is one of the valid options
+            return problem.answer.some(ans => ans.replace(/\s+/g, '').toLowerCase() === normalizedUserAnswer);
+        } else {
+            // Otherwise, perform a direct string comparison
+            const normalizedCorrectAnswer = problem.answer.replace(/\s+/g, '').toLowerCase();
+            return normalizedCorrectAnswer === normalizedUserAnswer;
+        }
     },
     
     // Update difficulty based on user performance
