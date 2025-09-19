@@ -1,257 +1,249 @@
 /* Base Styles - OG Theme */
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --error-color: #e74c3c;
-    --background-color: #f5f7fa;
-    --text-color: #2c3e50;
-    --border-color: #dfe6e9;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --card-background: #ffffff;
-    --input-background: #ffffff;
-    --hover-color: #f8f9fa;
-    --accent-color: #e1f0ff;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+    --border-color: #dfe6e9;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     
-    /* Extended color palette */
-    --title-color: #2c3e50;
-    --tab-color: #3498db;
-    --tab-active-color: #2980b9;
-    --math-color: #e67e22;
-    --physics-color: #9b59b6;
-    --progress-header-color: #34495e;
-    --correct-color: #27ae60;
-    --incorrect-color: #e74c3c;
-    --streak-color: #f39c12;
-    --stats-number-color: #2c3e50;
-    --section-header-color: #34495e;
-    --warning-color: #f39c12;
-    --info-color: #3498db;
+    /* Systematic Theme Colors A-I */
+    --color-a: #3498db;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #2c3e50;  /* Math & Physics Practice title */
+    --color-c: #e67e22;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #34495e;  /* Your Progress, Subjects headers */
+    --color-e: #2c3e50;  /* Numbers under correct, incorrect, streak */
+    --color-f: #27ae60;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #f5f7fa;  /* Main background */
+    --color-h: #ffffff;  /* Card/secondary background */
+    --color-i: #2c3e50;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #27ae60;   /* Green for Correct */
+    --color-f-incorrect: #e74c3c; /* Red for Incorrect */
+    --color-f-streak: #f39c12;    /* Orange for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* One Dark Pro Theme */
 [data-theme="one-dark-pro"] {
-    --primary-color: #61afef;
-    --secondary-color: #98c379;
-    --error-color: #e06c75;
-    --background-color: #282c34;
-    --text-color: #abb2bf;
-    --border-color: #3e4451;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --card-background: #21252b;
-    --input-background: #3e4451;
-    --hover-color: #2c313c;
-    --accent-color: #3e4451;
     --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --border-color: #3e4451;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* Extended color palette */
-    --title-color: #e5c07b;
-    --tab-color: #61afef;
-    --tab-active-color: #528bff;
-    --math-color: #d19a66;
-    --physics-color: #c678dd;
-    --progress-header-color: #e06c75;
-    --correct-color: #98c379;
-    --incorrect-color: #e06c75;
-    --streak-color: #e5c07b;
-    --stats-number-color: #56b6c2;
-    --section-header-color: #61afef;
-    --warning-color: #e5c07b;
-    --info-color: #61afef;
+    /* Systematic Theme Colors A-I */
+    --color-a: #61afef;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #e5c07b;  /* Math & Physics Practice title */
+    --color-c: #d19a66;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #c678dd;  /* Your Progress, Subjects headers */
+    --color-e: #56b6c2;  /* Numbers under correct, incorrect, streak */
+    --color-f: #98c379;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #282c34;  /* Main background */
+    --color-h: #21252b;  /* Card/secondary background */
+    --color-i: #abb2bf;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #98c379;   /* Green for Correct */
+    --color-f-incorrect: #e06c75; /* Red for Incorrect */
+    --color-f-streak: #e5c07b;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* Dracula Official Theme */
 [data-theme="dracula"] {
-    --primary-color: #bd93f9;
-    --secondary-color: #50fa7b;
-    --error-color: #ff5555;
-    --background-color: #282a36;
-    --text-color: #f8f8f2;
-    --border-color: #44475a;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --card-background: #44475a;
-    --input-background: #6272a4;
-    --hover-color: #6272a4;
-    --accent-color: #44475a;
     --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --border-color: #44475a;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     
-    /* Extended color palette */
-    --title-color: #ff79c6;
-    --tab-color: #bd93f9;
-    --tab-active-color: #9580ff;
-    --math-color: #ffb86c;
-    --physics-color: #8be9fd;
-    --progress-header-color: #ff79c6;
-    --correct-color: #50fa7b;
-    --incorrect-color: #ff5555;
-    --streak-color: #f1fa8c;
-    --stats-number-color: #8be9fd;
-    --section-header-color: #bd93f9;
-    --warning-color: #ffb86c;
-    --info-color: #8be9fd;
+    /* Systematic Theme Colors A-I */
+    --color-a: #bd93f9;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #ff79c6;  /* Math & Physics Practice title */
+    --color-c: #ffb86c;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #8be9fd;  /* Your Progress, Subjects headers */
+    --color-e: #f8f8f2;  /* Numbers under correct, incorrect, streak */
+    --color-f: #50fa7b;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #282a36;  /* Main background */
+    --color-h: #44475a;  /* Card/secondary background */
+    --color-i: #f8f8f2;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #50fa7b;   /* Green for Correct */
+    --color-f-incorrect: #ff5555; /* Red for Incorrect */
+    --color-f-streak: #f1fa8c;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* GitHub Dark Theme */
 [data-theme="github-dark"] {
-    --primary-color: #58a6ff;
-    --secondary-color: #56d364;
-    --error-color: #f85149;
-    --background-color: #0d1117;
-    --text-color: #c9d1d9;
-    --border-color: #30363d;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --card-background: #161b22;
-    --input-background: #21262d;
-    --hover-color: #21262d;
-    --accent-color: #21262d;
     --font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     --code-font: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    --border-color: #30363d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* Extended color palette */
-    --title-color: #f0883e;
-    --tab-color: #58a6ff;
-    --tab-active-color: #409cff;
-    --math-color: #ffa657;
-    --physics-color: #a5a5ff;
-    --progress-header-color: #f85149;
-    --correct-color: #56d364;
-    --incorrect-color: #f85149;
-    --streak-color: #d29922;
-    --stats-number-color: #79c0ff;
-    --section-header-color: #58a6ff;
-    --warning-color: #d29922;
-    --info-color: #58a6ff;
+    /* Systematic Theme Colors A-I */
+    --color-a: #58a6ff;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #f0883e;  /* Math & Physics Practice title */
+    --color-c: #ffa657;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #a5a5ff;  /* Your Progress, Subjects headers */
+    --color-e: #79c0ff;  /* Numbers under correct, incorrect, streak */
+    --color-f: #56d364;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #0d1117;  /* Main background */
+    --color-h: #161b22;  /* Card/secondary background */
+    --color-i: #c9d1d9;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #56d364;   /* Green for Correct */
+    --color-f-incorrect: #f85149; /* Red for Incorrect */
+    --color-f-streak: #d29922;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* Monokai Theme */
 [data-theme="monokai"] {
-    --primary-color: #66d9ef;
-    --secondary-color: #a6e22e;
-    --error-color: #f92672;
-    --background-color: #272822;
-    --text-color: #f8f8f2;
-    --border-color: #49483e;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --card-background: #3e3d32;
-    --input-background: #49483e;
-    --hover-color: #49483e;
-    --accent-color: #49483e;
     --font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     --code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    --border-color: #49483e;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     
-    /* Extended color palette */
-    --title-color: #fd971f;
-    --tab-color: #66d9ef;
-    --tab-active-color: #4dc6ef;
-    --math-color: #fd971f;
-    --physics-color: #ae81ff;
-    --progress-header-color: #f92672;
-    --correct-color: #a6e22e;
-    --incorrect-color: #f92672;
-    --streak-color: #e6db74;
-    --stats-number-color: #66d9ef;
-    --section-header-color: #66d9ef;
-    --warning-color: #fd971f;
-    --info-color: #66d9ef;
+    /* Systematic Theme Colors A-I */
+    --color-a: #66d9ef;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #fd971f;  /* Math & Physics Practice title */
+    --color-c: #ae81ff;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #f92672;  /* Your Progress, Subjects headers */
+    --color-e: #f8f8f2;  /* Numbers under correct, incorrect, streak */
+    --color-f: #a6e22e;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #272822;  /* Main background */
+    --color-h: #3e3d32;  /* Card/secondary background */
+    --color-i: #f8f8f2;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #a6e22e;   /* Green for Correct */
+    --color-f-incorrect: #f92672; /* Red for Incorrect */
+    --color-f-streak: #e6db74;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* Solarized Dark Theme */
 [data-theme="solarized-dark"] {
-    --primary-color: #268bd2;
-    --secondary-color: #859900;
-    --error-color: #dc322f;
-    --background-color: #002b36;
-    --text-color: #839496;
-    --border-color: #073642;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --card-background: #073642;
-    --input-background: #586e75;
-    --hover-color: #586e75;
-    --accent-color: #073642;
     --font-family: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
     --code-font: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
+    --border-color: #073642;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* Extended color palette */
-    --title-color: #cb4b16;
-    --tab-color: #268bd2;
-    --tab-active-color: #2aa198;
-    --math-color: #cb4b16;
-    --physics-color: #6c71c4;
-    --progress-header-color: #d33682;
-    --correct-color: #859900;
-    --incorrect-color: #dc322f;
-    --streak-color: #b58900;
-    --stats-number-color: #2aa198;
-    --section-header-color: #268bd2;
-    --warning-color: #b58900;
-    --info-color: #268bd2;
+    /* Systematic Theme Colors A-I */
+    --color-a: #268bd2;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #cb4b16;  /* Math & Physics Practice title */
+    --color-c: #6c71c4;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #d33682;  /* Your Progress, Subjects headers */
+    --color-e: #2aa198;  /* Numbers under correct, incorrect, streak */
+    --color-f: #859900;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #002b36;  /* Main background */
+    --color-h: #073642;  /* Card/secondary background */
+    --color-i: #839496;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #859900;   /* Green for Correct */
+    --color-f-incorrect: #dc322f; /* Red for Incorrect */
+    --color-f-streak: #b58900;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* Material Theme */
 [data-theme="material-theme"] {
-    --primary-color: #82aaff;
-    --secondary-color: #c3e88d;
-    --error-color: #f07178;
-    --background-color: #263238;
-    --text-color: #eeffff;
-    --border-color: #37474f;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --card-background: #37474f;
-    --input-background: #546e7a;
-    --hover-color: #546e7a;
-    --accent-color: #37474f;
     --font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
     --code-font: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
+    --border-color: #37474f;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* Extended color palette */
-    --title-color: #ffcb6b;
-    --tab-color: #82aaff;
-    --tab-active-color: #6c9eff;
-    --math-color: #f78c6c;
-    --physics-color: #c792ea;
-    --progress-header-color: #ff5370;
-    --correct-color: #c3e88d;
-    --incorrect-color: #f07178;
-    --streak-color: #ffcb6b;
-    --stats-number-color: #89ddff;
-    --section-header-color: #82aaff;
-    --warning-color: #ffcb6b;
-    --info-color: #89ddff;
+    /* Systematic Theme Colors A-I */
+    --color-a: #82aaff;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #ffcb6b;  /* Math & Physics Practice title */
+    --color-c: #f78c6c;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #c792ea;  /* Your Progress, Subjects headers */
+    --color-e: #89ddff;  /* Numbers under correct, incorrect, streak */
+    --color-f: #c3e88d;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #263238;  /* Main background */
+    --color-h: #37474f;  /* Card/secondary background */
+    --color-i: #eeffff;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #c3e88d;   /* Green for Correct */
+    --color-f-incorrect: #f07178; /* Red for Incorrect */
+    --color-f-streak: #ffcb6b;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 /* Nord Theme */
 [data-theme="nord"] {
-    --primary-color: #88c0d0;
-    --secondary-color: #a3be8c;
-    --error-color: #bf616a;
-    --background-color: #2e3440;
-    --text-color: #d8dee9;
-    --border-color: #3b4252;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --card-background: #3b4252;
-    --input-background: #434c5e;
-    --hover-color: #434c5e;
-    --accent-color: #3b4252;
     --font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
     --code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --border-color: #3b4252;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* Extended color palette */
-    --title-color: #d08770;
-    --tab-color: #88c0d0;
-    --tab-active-color: #81a1c1;
-    --math-color: #d08770;
-    --physics-color: #b48ead;
-    --progress-header-color: #bf616a;
-    --correct-color: #a3be8c;
-    --incorrect-color: #bf616a;
-    --streak-color: #ebcb8b;
-    --stats-number-color: #8fbcbb;
-    --section-header-color: #5e81ac;
-    --warning-color: #ebcb8b;
-    --info-color: #88c0d0;
+    /* Systematic Theme Colors A-I */
+    --color-a: #88c0d0;  /* Practice, Add Questions, Review Questions tabs */
+    --color-b: #d08770;  /* Math & Physics Practice title */
+    --color-c: #b48ead;  /* Subject topics (algebra, calculus, mechanics, etc.) */
+    --color-d: #5e81ac;  /* Your Progress, Subjects headers */
+    --color-e: #8fbcbb;  /* Numbers under correct, incorrect, streak */
+    --color-f: #a3be8c;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
+    --color-g: #2e3440;  /* Main background */
+    --color-h: #3b4252;  /* Card/secondary background */
+    --color-i: #d8dee9;  /* Subtitle and problem text color */
+    
+    /* Semantic overrides for Color F */
+    --color-f-correct: #a3be8c;   /* Green for Correct */
+    --color-f-incorrect: #bf616a; /* Red for Incorrect */
+    --color-f-streak: #ebcb8b;    /* Yellow for Streak */
+    
+    /* Button and interaction colors */
+    --button-primary: var(--color-a);
+    --button-secondary: var(--color-c);
+    --button-success: var(--color-f-correct);
+    --button-danger: var(--color-f-incorrect);
+    --button-warning: var(--color-f-streak);
 }
 
 * {
@@ -263,8 +255,8 @@
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--color-i);
+    background-color: var(--color-g);
     padding: 20px;
     transition: all 0.3s ease;
 }
@@ -294,7 +286,7 @@ header {
 }
 
 h1 {
-    color: var(--title-color);
+    color: var(--color-b);
     margin-bottom: 10px;
     font-family: var(--font-family);
 }
@@ -304,15 +296,15 @@ h1 {
 }
 
 .category h3:first-of-type {
-    color: var(--math-color);
+    color: var(--color-c);
 }
 
 .category h3:last-of-type {
-    color: var(--physics-color);
+    color: var(--color-c);
 }
 
 .subject-selection h2 {
-    color: var(--section-header-color);
+    color: var(--color-d);
     margin-bottom: 10px;
 }
 
@@ -322,8 +314,8 @@ h1 {
 }
 
 .theme-selector select {
-    background: var(--card-background);
-    color: var(--text-color);
+    background: var(--color-h);
+    color: var(--color-i);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 8px 12px;
@@ -346,7 +338,7 @@ h1 {
 
 /* Subject Selection */
 .subject-selection {
-    background: var(--card-background);
+    background: var(--color-h);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
@@ -390,14 +382,15 @@ h1 {
 }
 
 button, .subject-btn {
-    background-color: var(--primary-color);
+    background-color: var(--button-primary);
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s;
+    font-family: var(--font-family);
+    transition: all 0.2s;
 }
 
 button:hover, .subject-btn:hover {
@@ -639,14 +632,14 @@ button:hover, .subject-btn:hover {
 
 /* Progress Container */
 .progress-container {
-    background: var(--card-background);
+    background: var(--color-h);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
 }
 
 .progress-container h3 {
-    color: var(--progress-header-color);
+    color: var(--color-d);
     margin-bottom: 15px;
 }
 
@@ -666,32 +659,32 @@ button:hover, .subject-btn:hover {
 
 /* Progress stat labels */
 #progress-stats > div:first-child {
-    color: var(--correct-color);
+    color: var(--color-f-correct);
 }
 
 #progress-stats > div:nth-child(2) {
-    color: var(--incorrect-color);
+    color: var(--color-f-incorrect);
 }
 
 #progress-stats > div:last-child {
-    color: var(--streak-color);
+    color: var(--color-f-streak);
 }
 
 /* Progress stat numbers */
 #correct-count {
-    color: var(--stats-number-color);
+    color: var(--color-e);
     font-weight: bold;
     font-size: 1.2em;
 }
 
 #incorrect-count {
-    color: var(--stats-number-color);
+    color: var(--color-e);
     font-weight: bold;
     font-size: 1.2em;
 }
 
 #streak-count {
-    color: var(--stats-number-color);
+    color: var(--color-e);
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -699,7 +692,7 @@ button:hover, .subject-btn:hover {
 /* Tab Navigation */
 .tab-navigation {
     display: flex;
-    background: var(--card-background);
+    background: var(--color-h);
     border-radius: 8px 8px 0 0;
     box-shadow: var(--shadow);
     margin-bottom: 0;
@@ -708,8 +701,8 @@ button:hover, .subject-btn:hover {
 .tab-btn {
     flex: 1;
     padding: 15px 20px;
-    background: var(--hover-color);
-    color: var(--tab-color);
+    background: var(--color-h);
+    color: var(--color-a);
     border: none;
     border-radius: 8px 8px 0 0;
     cursor: pointer;
@@ -721,19 +714,20 @@ button:hover, .subject-btn:hover {
 }
 
 .tab-btn:hover {
-    background: var(--accent-color);
-    color: var(--tab-active-color);
+    background: var(--color-h);
+    color: var(--color-a);
+    opacity: 0.8;
 }
 
 .tab-btn.active {
-    background: var(--card-background);
-    color: var(--tab-active-color);
-    border-bottom: 3px solid var(--tab-active-color);
+    background: var(--color-h);
+    color: var(--color-a);
+    border-bottom: 3px solid var(--color-a);
 }
 
 /* Tab Content */
 .tab-content {
-    background: var(--card-background);
+    background: var(--color-h);
     border-radius: 0 0 8px 8px;
     box-shadow: var(--shadow);
     min-height: 500px;
@@ -749,7 +743,7 @@ button:hover, .subject-btn:hover {
 }
 
 .tab-panel h2 {
-    color: var(--section-header-color);
+    color: var(--color-d);
     margin-bottom: 20px;
     font-weight: 600;
 }
