@@ -1,249 +1,381 @@
-/* Base Styles - OG Theme */
+/* Base Theme System - Logical Color Groups */
 :root {
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
-    --border-color: #dfe6e9;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --border-color: #e1e5e9;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #3498db;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #2c3e50;  /* Math & Physics Practice title */
-    --color-c: #e67e22;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #34495e;  /* Your Progress, Subjects headers */
-    --color-e: #2c3e50;  /* Numbers under correct, incorrect, streak */
-    --color-f: #27ae60;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #f5f7fa;  /* Main background */
-    --color-h: #ffffff;  /* Card/secondary background */
-    --color-i: #2c3e50;  /* Subtitle and problem text color */
+    /* GROUP 1: BACKGROUNDS & SURFACES */
+    --bg-primary: #ffffff;      /* Main background */
+    --bg-secondary: #f8fafc;    /* Cards, panels */
+    --bg-tertiary: #f1f5f9;     /* Hover states, subtle backgrounds */
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #27ae60;   /* Green for Correct */
-    --color-f-incorrect: #e74c3c; /* Red for Incorrect */
-    --color-f-streak: #f39c12;    /* Orange for Streak */
+    /* GROUP 2: TEXT & CONTENT */
+    --text-primary: #1e293b;    /* Main text, body content */
+    --text-secondary: #64748b;  /* Secondary text, descriptions */
+    --text-accent: #0f172a;     /* Headings, important text */
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    /* GROUP 3: NAVIGATION & STRUCTURE */
+    --nav-primary: #3b82f6;     /* Active tabs, primary navigation */
+    --nav-secondary: #6b7280;   /* Inactive tabs, secondary nav */
+    --section-header: #374151;  /* Section titles (Your Progress, Subjects) */
+    
+    /* GROUP 4: INTERACTIVE ELEMENTS */
+    --interactive-primary: #3b82f6;   /* Primary buttons, main actions */
+    --interactive-secondary: #8b5cf6; /* Secondary buttons, subject topics */
+    --interactive-tertiary: #06b6d4;  /* Tertiary actions */
+    
+    /* GROUP 5: SEMANTIC COLORS */
+    --success: #10b981;         /* Correct answers, success states */
+    --error: #ef4444;           /* Incorrect answers, errors */
+    --warning: #f59e0b;         /* Streaks, warnings */
+    --info: #3b82f6;           /* Information, neutral states */
+    
+    /* GROUP 6: DATA & STATISTICS */
+    --data-primary: #1e293b;    /* Numbers, statistics */
+    --data-success: #10b981;    /* Correct count color */
+    --data-error: #ef4444;      /* Incorrect count color */
+    --data-warning: #f59e0b;    /* Streak count color */
 }
 
-/* One Dark Pro Theme */
+/* 1. One Dark Pro - Most Popular Dark Theme */
 [data-theme="one-dark-pro"] {
-    --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
-    --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', monospace;
     --border-color: #3e4451;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #61afef;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #e5c07b;  /* Math & Physics Practice title */
-    --color-c: #d19a66;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #c678dd;  /* Your Progress, Subjects headers */
-    --color-e: #56b6c2;  /* Numbers under correct, incorrect, streak */
-    --color-f: #98c379;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #282c34;  /* Main background */
-    --color-h: #21252b;  /* Card/secondary background */
-    --color-i: #abb2bf;  /* Subtitle and problem text color */
+    --bg-primary: #282c34;
+    --bg-secondary: #21252b;
+    --bg-tertiary: #2c313c;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #98c379;   /* Green for Correct */
-    --color-f-incorrect: #e06c75; /* Red for Incorrect */
-    --color-f-streak: #e5c07b;    /* Yellow for Streak */
+    --text-primary: #abb2bf;
+    --text-secondary: #5c6370;
+    --text-accent: #e5c07b;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #61afef;
+    --nav-secondary: #5c6370;
+    --section-header: #c678dd;
+    
+    --interactive-primary: #61afef;
+    --interactive-secondary: #d19a66;
+    --interactive-tertiary: #56b6c2;
+    
+    --success: #98c379;
+    --error: #e06c75;
+    --warning: #e5c07b;
+    --info: #61afef;
+    
+    --data-primary: #e5c07b;
+    --data-success: #98c379;
+    --data-error: #e06c75;
+    --data-warning: #e5c07b;
 }
 
-/* Dracula Official Theme */
+/* 2. Dracula - Popular Vampire Theme */
 [data-theme="dracula"] {
-    --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
-    --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', monospace;
     --border-color: #44475a;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #bd93f9;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #ff79c6;  /* Math & Physics Practice title */
-    --color-c: #ffb86c;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #8be9fd;  /* Your Progress, Subjects headers */
-    --color-e: #f8f8f2;  /* Numbers under correct, incorrect, streak */
-    --color-f: #50fa7b;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #282a36;  /* Main background */
-    --color-h: #44475a;  /* Card/secondary background */
-    --color-i: #f8f8f2;  /* Subtitle and problem text color */
+    --bg-primary: #282a36;
+    --bg-secondary: #44475a;
+    --bg-tertiary: #6272a4;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #50fa7b;   /* Green for Correct */
-    --color-f-incorrect: #ff5555; /* Red for Incorrect */
-    --color-f-streak: #f1fa8c;    /* Yellow for Streak */
+    --text-primary: #f8f8f2;
+    --text-secondary: #6272a4;
+    --text-accent: #ff79c6;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #bd93f9;
+    --nav-secondary: #6272a4;
+    --section-header: #8be9fd;
+    
+    --interactive-primary: #bd93f9;
+    --interactive-secondary: #ffb86c;
+    --interactive-tertiary: #8be9fd;
+    
+    --success: #50fa7b;
+    --error: #ff5555;
+    --warning: #f1fa8c;
+    --info: #8be9fd;
+    
+    --data-primary: #ff79c6;
+    --data-success: #50fa7b;
+    --data-error: #ff5555;
+    --data-warning: #f1fa8c;
 }
 
-/* GitHub Dark Theme */
+/* 3. GitHub Dark - Clean Professional Theme */
 [data-theme="github-dark"] {
-    --font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    --code-font: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    --font-family: 'SF Mono', 'Monaco', 'JetBrains Mono', monospace;
+    --code-font: 'SF Mono', 'Monaco', 'JetBrains Mono', monospace;
     --border-color: #30363d;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #58a6ff;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #f0883e;  /* Math & Physics Practice title */
-    --color-c: #ffa657;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #a5a5ff;  /* Your Progress, Subjects headers */
-    --color-e: #79c0ff;  /* Numbers under correct, incorrect, streak */
-    --color-f: #56d364;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #0d1117;  /* Main background */
-    --color-h: #161b22;  /* Card/secondary background */
-    --color-i: #c9d1d9;  /* Subtitle and problem text color */
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #56d364;   /* Green for Correct */
-    --color-f-incorrect: #f85149; /* Red for Incorrect */
-    --color-f-streak: #d29922;    /* Yellow for Streak */
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-accent: #f0883e;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #58a6ff;
+    --nav-secondary: #8b949e;
+    --section-header: #a5a5ff;
+    
+    --interactive-primary: #58a6ff;
+    --interactive-secondary: #ffa657;
+    --interactive-tertiary: #79c0ff;
+    
+    --success: #56d364;
+    --error: #f85149;
+    --warning: #d29922;
+    --info: #58a6ff;
+    
+    --data-primary: #79c0ff;
+    --data-success: #56d364;
+    --data-error: #f85149;
+    --data-warning: #d29922;
 }
 
-/* Monokai Theme */
+/* 4. Monokai - Classic Sublime Text Theme */
 [data-theme="monokai"] {
     --font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     --code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     --border-color: #49483e;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #66d9ef;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #fd971f;  /* Math & Physics Practice title */
-    --color-c: #ae81ff;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #f92672;  /* Your Progress, Subjects headers */
-    --color-e: #f8f8f2;  /* Numbers under correct, incorrect, streak */
-    --color-f: #a6e22e;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #272822;  /* Main background */
-    --color-h: #3e3d32;  /* Card/secondary background */
-    --color-i: #f8f8f2;  /* Subtitle and problem text color */
+    --bg-primary: #272822;
+    --bg-secondary: #3e3d32;
+    --bg-tertiary: #49483e;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #a6e22e;   /* Green for Correct */
-    --color-f-incorrect: #f92672; /* Red for Incorrect */
-    --color-f-streak: #e6db74;    /* Yellow for Streak */
+    --text-primary: #f8f8f2;
+    --text-secondary: #75715e;
+    --text-accent: #fd971f;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #66d9ef;
+    --nav-secondary: #75715e;
+    --section-header: #f92672;
+    
+    --interactive-primary: #66d9ef;
+    --interactive-secondary: #ae81ff;
+    --interactive-tertiary: #a6e22e;
+    
+    --success: #a6e22e;
+    --error: #f92672;
+    --warning: #e6db74;
+    --info: #66d9ef;
+    
+    --data-primary: #fd971f;
+    --data-success: #a6e22e;
+    --data-error: #f92672;
+    --data-warning: #e6db74;
 }
 
-/* Solarized Dark Theme */
+/* 5. Solarized Dark - Eye-friendly Theme */
 [data-theme="solarized-dark"] {
     --font-family: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
     --code-font: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
     --border-color: #073642;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #268bd2;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #cb4b16;  /* Math & Physics Practice title */
-    --color-c: #6c71c4;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #d33682;  /* Your Progress, Subjects headers */
-    --color-e: #2aa198;  /* Numbers under correct, incorrect, streak */
-    --color-f: #859900;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #002b36;  /* Main background */
-    --color-h: #073642;  /* Card/secondary background */
-    --color-i: #839496;  /* Subtitle and problem text color */
+    --bg-primary: #002b36;
+    --bg-secondary: #073642;
+    --bg-tertiary: #586e75;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #859900;   /* Green for Correct */
-    --color-f-incorrect: #dc322f; /* Red for Incorrect */
-    --color-f-streak: #b58900;    /* Yellow for Streak */
+    --text-primary: #839496;
+    --text-secondary: #657b83;
+    --text-accent: #cb4b16;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #268bd2;
+    --nav-secondary: #657b83;
+    --section-header: #d33682;
+    
+    --interactive-primary: #268bd2;
+    --interactive-secondary: #6c71c4;
+    --interactive-tertiary: #2aa198;
+    
+    --success: #859900;
+    --error: #dc322f;
+    --warning: #b58900;
+    --info: #268bd2;
+    
+    --data-primary: #2aa198;
+    --data-success: #859900;
+    --data-error: #dc322f;
+    --data-warning: #b58900;
 }
 
-/* Material Theme */
+/* 6. Material Theme - Google Material Design */
 [data-theme="material-theme"] {
     --font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
     --code-font: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
     --border-color: #37474f;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #82aaff;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #ffcb6b;  /* Math & Physics Practice title */
-    --color-c: #f78c6c;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #c792ea;  /* Your Progress, Subjects headers */
-    --color-e: #89ddff;  /* Numbers under correct, incorrect, streak */
-    --color-f: #c3e88d;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #263238;  /* Main background */
-    --color-h: #37474f;  /* Card/secondary background */
-    --color-i: #eeffff;  /* Subtitle and problem text color */
+    --bg-primary: #263238;
+    --bg-secondary: #37474f;
+    --bg-tertiary: #546e7a;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #c3e88d;   /* Green for Correct */
-    --color-f-incorrect: #f07178; /* Red for Incorrect */
-    --color-f-streak: #ffcb6b;    /* Yellow for Streak */
+    --text-primary: #eeffff;
+    --text-secondary: #b0bec5;
+    --text-accent: #ffcb6b;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #82aaff;
+    --nav-secondary: #b0bec5;
+    --section-header: #c792ea;
+    
+    --interactive-primary: #82aaff;
+    --interactive-secondary: #f78c6c;
+    --interactive-tertiary: #89ddff;
+    
+    --success: #c3e88d;
+    --error: #f07178;
+    --warning: #ffcb6b;
+    --info: #89ddff;
+    
+    --data-primary: #89ddff;
+    --data-success: #c3e88d;
+    --data-error: #f07178;
+    --data-warning: #ffcb6b;
 }
 
-/* Nord Theme */
+/* 7. Nord - Arctic Blue Theme */
 [data-theme="nord"] {
     --font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
     --code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
     --border-color: #3b4252;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
-    /* Systematic Theme Colors A-I */
-    --color-a: #88c0d0;  /* Practice, Add Questions, Review Questions tabs */
-    --color-b: #d08770;  /* Math & Physics Practice title */
-    --color-c: #b48ead;  /* Subject topics (algebra, calculus, mechanics, etc.) */
-    --color-d: #5e81ac;  /* Your Progress, Subjects headers */
-    --color-e: #8fbcbb;  /* Numbers under correct, incorrect, streak */
-    --color-f: #a3be8c;  /* Correct, Incorrect, Streak labels (will be overridden per stat) */
-    --color-g: #2e3440;  /* Main background */
-    --color-h: #3b4252;  /* Card/secondary background */
-    --color-i: #d8dee9;  /* Subtitle and problem text color */
+    --bg-primary: #2e3440;
+    --bg-secondary: #3b4252;
+    --bg-tertiary: #434c5e;
     
-    /* Semantic overrides for Color F */
-    --color-f-correct: #a3be8c;   /* Green for Correct */
-    --color-f-incorrect: #bf616a; /* Red for Incorrect */
-    --color-f-streak: #ebcb8b;    /* Yellow for Streak */
+    --text-primary: #d8dee9;
+    --text-secondary: #81a1c1;
+    --text-accent: #d08770;
     
-    /* Button and interaction colors */
-    --button-primary: var(--color-a);
-    --button-secondary: var(--color-c);
-    --button-success: var(--color-f-correct);
-    --button-danger: var(--color-f-incorrect);
-    --button-warning: var(--color-f-streak);
+    --nav-primary: #88c0d0;
+    --nav-secondary: #81a1c1;
+    --section-header: #5e81ac;
+    
+    --interactive-primary: #88c0d0;
+    --interactive-secondary: #b48ead;
+    --interactive-tertiary: #8fbcbb;
+    
+    --success: #a3be8c;
+    --error: #bf616a;
+    --warning: #ebcb8b;
+    --info: #88c0d0;
+    
+    --data-primary: #8fbcbb;
+    --data-success: #a3be8c;
+    --data-error: #bf616a;
+    --data-warning: #ebcb8b;
+}
+
+/* 8. Tokyo Night - Modern Dark Theme */
+[data-theme="tokyo-night"] {
+    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', monospace;
+    --border-color: #24283b;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
+    --bg-primary: #1a1b26;
+    --bg-secondary: #24283b;
+    --bg-tertiary: #414868;
+    
+    --text-primary: #c0caf5;
+    --text-secondary: #565f89;
+    --text-accent: #ff9e64;
+    
+    --nav-primary: #7aa2f7;
+    --nav-secondary: #565f89;
+    --section-header: #bb9af7;
+    
+    --interactive-primary: #7aa2f7;
+    --interactive-secondary: #f7768e;
+    --interactive-tertiary: #7dcfff;
+    
+    --success: #9ece6a;
+    --error: #f7768e;
+    --warning: #e0af68;
+    --info: #7aa2f7;
+    
+    --data-primary: #bb9af7;
+    --data-success: #9ece6a;
+    --data-error: #f7768e;
+    --data-warning: #e0af68;
+}
+
+/* 9. Catppuccin Mocha - Pastel Dark Theme */
+[data-theme="catppuccin"] {
+    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', monospace;
+    --border-color: #313244;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
+    --bg-primary: #1e1e2e;
+    --bg-secondary: #313244;
+    --bg-tertiary: #45475a;
+    
+    --text-primary: #cdd6f4;
+    --text-secondary: #6c7086;
+    --text-accent: #fab387;
+    
+    --nav-primary: #89b4fa;
+    --nav-secondary: #6c7086;
+    --section-header: #cba6f7;
+    
+    --interactive-primary: #89b4fa;
+    --interactive-secondary: #f38ba8;
+    --interactive-tertiary: #94e2d5;
+    
+    --success: #a6e3a1;
+    --error: #f38ba8;
+    --warning: #f9e2af;
+    --info: #89b4fa;
+    
+    --data-primary: #cba6f7;
+    --data-success: #a6e3a1;
+    --data-error: #f38ba8;
+    --data-warning: #f9e2af;
+}
+
+/* 10. Gruvbox Dark - Retro Warm Theme */
+[data-theme="gruvbox"] {
+    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', monospace;
+    --border-color: #3c3836;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
+    --bg-primary: #282828;
+    --bg-secondary: #3c3836;
+    --bg-tertiary: #504945;
+    
+    --text-primary: #ebdbb2;
+    --text-secondary: #a89984;
+    --text-accent: #fe8019;
+    
+    --nav-primary: #83a598;
+    --nav-secondary: #a89984;
+    --section-header: #d3869b;
+    
+    --interactive-primary: #83a598;
+    --interactive-secondary: #d79921;
+    --interactive-tertiary: #8ec07c;
+    
+    --success: #b8bb26;
+    --error: #fb4934;
+    --warning: #fabd2f;
+    --info: #83a598;
+    
+    --data-primary: #fe8019;
+    --data-success: #b8bb26;
+    --data-error: #fb4934;
+    --data-warning: #fabd2f;
 }
 
 * {
@@ -255,8 +387,8 @@
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    color: var(--color-i);
-    background-color: var(--color-g);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     padding: 20px;
     transition: all 0.3s ease;
 }
@@ -286,7 +418,7 @@ header {
 }
 
 h1 {
-    color: var(--color-b);
+    color: var(--text-accent);
     margin-bottom: 10px;
     font-family: var(--font-family);
 }
@@ -297,27 +429,27 @@ h1 {
 
 /* Mathematics header */
 .category:first-child h3 {
-    color: var(--color-d);
+    color: var(--section-header);
 }
 
 /* Physics header */
 .category:last-child h3 {
-    color: var(--color-d);
+    color: var(--section-header);
 }
 
 /* Subject topic buttons (algebra, calculus, mechanics, etc.) */
 .subject-btn {
-    background-color: var(--button-secondary);
+    background-color: var(--interactive-secondary);
     color: white;
 }
 
 .subject-btn:hover {
-    background-color: var(--color-c);
+    background-color: var(--interactive-secondary);
     opacity: 0.8;
 }
 
 .subject-selection h2 {
-    color: var(--color-d);
+    color: var(--section-header);
     margin-bottom: 10px;
 }
 
@@ -327,8 +459,8 @@ h1 {
 }
 
 .theme-selector select {
-    background: var(--color-h);
-    color: var(--color-i);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 8px 12px;
@@ -351,7 +483,7 @@ h1 {
 
 /* Subject Selection */
 .subject-selection {
-    background: var(--color-h);
+    background: var(--bg-secondary);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
@@ -366,7 +498,7 @@ h1 {
 }
 
 .category {
-    background: var(--hover-color);
+    background: var(--bg-tertiary);
     padding: 15px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
@@ -395,7 +527,7 @@ h1 {
 }
 
 button, .subject-btn {
-    background-color: var(--button-primary);
+    background-color: var(--interactive-primary);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -637,14 +769,14 @@ button:hover {
 
 /* Progress Container */
 .progress-container {
-    background: var(--color-h);
+    background: var(--bg-secondary);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
 }
 
 .progress-container h3 {
-    color: var(--color-d);
+    color: var(--section-header);
     margin-bottom: 15px;
 }
 
@@ -664,32 +796,32 @@ button:hover {
 
 /* Progress stat labels */
 #progress-stats > div:first-child {
-    color: var(--color-f-correct);
+    color: var(--data-success);
 }
 
 #progress-stats > div:nth-child(2) {
-    color: var(--color-f-incorrect);
+    color: var(--data-error);
 }
 
 #progress-stats > div:last-child {
-    color: var(--color-f-streak);
+    color: var(--data-warning);
 }
 
 /* Progress stat numbers */
 #correct-count {
-    color: var(--color-e);
+    color: var(--data-primary);
     font-weight: bold;
     font-size: 1.2em;
 }
 
 #incorrect-count {
-    color: var(--color-e);
+    color: var(--data-primary);
     font-weight: bold;
     font-size: 1.2em;
 }
 
 #streak-count {
-    color: var(--color-e);
+    color: var(--data-primary);
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -697,7 +829,7 @@ button:hover {
 /* Tab Navigation */
 .tab-navigation {
     display: flex;
-    background: var(--color-h);
+    background: var(--bg-secondary);
     border-radius: 8px 8px 0 0;
     box-shadow: var(--shadow);
     margin-bottom: 0;
@@ -706,8 +838,8 @@ button:hover {
 .tab-btn {
     flex: 1;
     padding: 15px 20px;
-    background: var(--color-h);
-    color: var(--color-a);
+    background: var(--bg-tertiary);
+    color: var(--nav-secondary);
     border: none;
     border-radius: 8px 8px 0 0;
     cursor: pointer;
@@ -719,20 +851,20 @@ button:hover {
 }
 
 .tab-btn:hover {
-    background: var(--color-h);
-    color: var(--color-a);
-    opacity: 0.8;
+    background: var(--bg-tertiary);
+    color: var(--nav-primary);
+    opacity: 0.9;
 }
 
 .tab-btn.active {
-    background: var(--color-h);
-    color: var(--color-a);
-    border-bottom: 3px solid var(--color-a);
+    background: var(--bg-secondary);
+    color: var(--nav-primary);
+    border-bottom: 3px solid var(--nav-primary);
 }
 
 /* Tab Content */
 .tab-content {
-    background: var(--color-h);
+    background: var(--bg-secondary);
     border-radius: 0 0 8px 8px;
     box-shadow: var(--shadow);
     min-height: 500px;
@@ -748,7 +880,7 @@ button:hover {
 }
 
 .tab-panel h2 {
-    color: var(--color-d);
+    color: var(--section-header);
     margin-bottom: 20px;
     font-weight: 600;
 }
