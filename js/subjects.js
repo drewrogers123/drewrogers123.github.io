@@ -4,25 +4,14 @@ const subjects = {
         name: 'Mathematics',
         topics: [
             { id: 'algebra', name: 'Algebra' },
-            { id: 'calculus', name: 'Calculus' },
-            { id: 'geometry', name: 'Geometry' },
-            { id: 'trigonometry', name: 'Trigonometry' },
-            { id: 'linear-algebra', name: 'Linear Algebra' },
-            { id: 'probability', name: 'Probability' },
-            { id: 'statistics', name: 'Statistics' },
-            { id: 'discrete-math', name: 'Discrete Math' }
+            { id: 'calculus', name: 'Calculus' }
         ]
     },
     physics: {
         name: 'Physics',
         topics: [
             { id: 'mechanics', name: 'Classical Mechanics' },
-            { id: 'electromagnetism', name: 'Electromagnetism' },
-            { id: 'thermodynamics', name: 'Thermodynamics' },
-            { id: 'optics', name: 'Optics' },
-            { id: 'quantum', name: 'Quantum Mechanics' },
-            { id: 'relativity', name: 'Relativity' },
-            { id: 'waves', name: 'Waves & Oscillations' }
+            { id: 'quantum', name: 'Quantum Mechanics' }
         ]
     }
 };
