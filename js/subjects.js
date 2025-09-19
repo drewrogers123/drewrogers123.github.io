@@ -1,23 +1,44 @@
-// Simplified subject list
-const subjects = [
-    { id: 'algebra', name: 'Algebra', category: 'math' },
-    { id: 'calculus', name: 'Calculus', category: 'math' },
-    { id: 'mechanics', name: 'Classical Mechanics', category: 'physics' },
-    { id: 'quantum', name: 'Quantum Mechanics', category: 'physics' }
-];
+// Subject categories and topics
+const subjects = {
+    math: {
+        name: 'Mathematics',
+        topics: [
+            { id: 'algebra', name: 'Algebra' },
+            { id: 'calculus', name: 'Calculus' }
+        ]
+    },
+    physics: {
+        name: 'Physics',
+        topics: [
+            { id: 'mechanics', name: 'Classical Mechanics' },
+            { id: 'quantum', name: 'Quantum Mechanics' }
+        ]
+    }
+};
 
 // Function to initialize subject buttons
 function initSubjectButtons() {
-    const subjectButtonsContainer = document.getElementById('subject-buttons');
-    if (!subjectButtonsContainer) return;
-
-    subjects.forEach(subject => {
+    const mathButtons = document.getElementById('math-buttons');
+    const physicsButtons = document.getElementById('physics-buttons');
+    
+    // Add math subject buttons
+    subjects.math.topics.forEach(topic => {
         const button = document.createElement('button');
         button.className = 'subject-btn';
-        button.textContent = subject.name;
-        button.dataset.subject = subject.category;
-        button.dataset.topic = subject.id;
-        subjectButtonsContainer.appendChild(button);
+        button.textContent = topic.name;
+        button.dataset.subject = 'math';
+        button.dataset.topic = topic.id;
+        mathButtons.appendChild(button);
+    });
+    
+    // Add physics subject buttons
+    subjects.physics.topics.forEach(topic => {
+        const button = document.createElement('button');
+        button.className = 'subject-btn';
+        button.textContent = topic.name;
+        button.dataset.subject = 'physics';
+        button.dataset.topic = topic.id;
+        physicsButtons.appendChild(button);
     });
 }
 

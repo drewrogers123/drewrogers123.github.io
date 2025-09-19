@@ -304,7 +304,7 @@ button:hover, .subject-btn:hover {
 .difficulty-level {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #2ecc71, #3498db);
+    background: linear-gradient(90deg, #2ecc71, #f1c40f, #e74c3c);
     transition: width 0.3s ease;
 }
 

@@ -12,16 +12,21 @@ const problemBank = {
                     difficulty: 1,
                     question: "Solve for x: $2x + 5 = 15$",
                     answer: "5",
-                    solution: "Subtract 5 from both sides: $2x = 10$. Then divide both sides by 2: $x = 5$.",
-                    tags: ["linear equations", "solving for x"]
+                    solution: "Subtract 5 from both sides to get $2x = 10$. Divide by 2 to get $x = 5$."
                 },
                 {
                     id: 'alg2',
                     difficulty: 3,
-                    question: "Factor the quadratic: $x^2 - 5x + 6$",
+                    question: "Factor the quadratic expression: $x^2 - 5x + 6$",
                     answer: "(x-2)(x-3)",
-                    solution: "Find two numbers that multiply to 6 and add to -5. The numbers are -2 and -3, so the factored form is $(x-2)(x-3)$.",
-                    tags: ["factoring", "quadratics"]
+                    solution: "We need two numbers that multiply to 6 and add to -5. These are -2 and -3. So the factored form is $(x-2)(x-3)$."
+                },
+                {
+                    id: 'alg3',
+                    difficulty: 5,
+                    question: "Solve the inequality: $|2x - 1| \leq 5$",
+                    answer: "-2<=x<=3",
+                    solution: "The inequality $|2x - 1| \leq 5$ can be written as $-5 \leq 2x - 1 \leq 5$. Add 1 to all parts to get $-4 \leq 2x \leq 6$. Divide by 2 to get $-2 \leq x \leq 3$."
                 }
             ],
             calculus: [
@@ -29,9 +34,22 @@ const problemBank = {
                     id: 'calc1',
                     difficulty: 2,
                     question: "Find the derivative of $f(x) = 3x^2 + 2x - 5$",
-                    answer: "6x + 2",
-                    solution: "Apply the power rule to each term: $\\frac{d}{dx}(3x^2) = 6x$, $\\frac{d}{dx}(2x) = 2$, $\\frac{d}{dx}(-5) = 0$. So, $f'(x) = 6x + 2$.",
-                    tags: ["derivatives", "power rule"]
+                    answer: "6x+2",
+                    solution: "Using the power rule, the derivative of $3x^2$ is $6x$, the derivative of $2x$ is $2$, and the derivative of a constant is 0. So, $f'(x) = 6x + 2$."
+                },
+                {
+                    id: 'calc2',
+                    difficulty: 4,
+                    question: "Evaluate the definite integral: $\int_{0}^{1} (x^2 + 1) dx$",
+                    answer: "4/3",
+                    solution: "The integral of $x^2$ is $\frac{x^3}{3}$ and the integral of 1 is $x$. Evaluating from 0 to 1 gives $(\frac{1^3}{3} + 1) - (\frac{0^3}{3} + 0) = \frac{1}{3} + 1 = \frac{4}{3}$."
+                },
+                {
+                    id: 'calc3',
+                    difficulty: 6,
+                    question: "Find the limit: $\lim_{x \to 0} \frac{\sin(x)}{x}$",
+                    answer: "1",
+                    solution: "This is a standard limit that evaluates to 1. It can be proven using L'Hôpital's Rule or the Squeeze Theorem."
                 }
             ]
         },
@@ -40,11 +58,32 @@ const problemBank = {
                 {
                     id: 'mech1',
                     difficulty: 2,
-                    question: "A car accelerates from rest at $2 \\text{ m/s}^2$ for 5 seconds. What is its final velocity?",
-                    answer: "10",
-                    units: "m/s",
-                    solution: "Using $v = u + at$ where $u=0$, $a=2\\text{ m/s}^2$, $t=5\\text{ s}$: $v = 0 + (2)(5) = 10\\text{ m/s}$.",
-                    tags: ["kinematics", "constant acceleration"]
+                    question: "A ball of mass 0.5 kg is dropped from a height of 10 m. What is its potential energy at the start? (Use $g = 9.8 \\text{ m/s}^2$)",
+                    answer: "49 J",
+                    solution: "Potential Energy is given by $PE = mgh$. So, $PE = (0.5 \\text{ kg})(9.8 \\text{ m/s}^2)(10 \\text{ m}) = 49 \\text{ Joules}$."
+                },
+                {
+                    id: 'mech2',
+                    difficulty: 4,
+                    question: "A force of 20 N is applied to a 5 kg object. What is the acceleration of the object?",
+                    answer: "4 m/s^2",
+                    solution: "Using Newton's second law, $F=ma$. Rearranging for acceleration gives $a = F/m$. So, $a = 20 \\text{ N} / 5 \\text{ kg} = 4 \\text{ m/s}^2$."
+                }
+            ],
+            quantum: [
+                {
+                    id: 'quant1',
+                    difficulty: 3,
+                    question: "What is the energy of a photon with a frequency of $1.5 \\times 10^{15}$ Hz? (Use Planck's constant $h = 6.626 \\times 10^{-34} \\text{ J·s}$)",
+                    answer: "9.939e-19 J",
+                    solution: "The energy of a photon is given by $E = hf$. So, $E = (6.626 \\times 10^{-34} \\text{ J·s}) (1.5 \\times 10^{15} \\text{ Hz}) \\approx 9.939 \\times 10^{-19} \\text{ J}$."
+                },
+                {
+                    id: 'quant2',
+                    difficulty: 5,
+                    question: "An electron is confined to a 1D box of length 1 nm. What is the ground state energy of the electron? (Use the formula $E_n = \frac{n^2h^2}{8mL^2}$)",
+                    answer: "6.02e-20 J",
+                    solution: "For the ground state, n=1. Given $m_e \\approx 9.109 \\times 10^{-31}$ kg and L = $1 \\times 10^{-9}$ m, the energy is $E_1 = \frac{1^2(6.626 \\times 10^{-34})^2}{8(9.109 \\times 10^{-31})(1 \\times 10^{-9})^2} \\approx 6.02 \\times 10^{-20} \\text{ J}$."
                 }
             ]
         }

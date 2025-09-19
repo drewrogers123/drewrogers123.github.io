@@ -64,12 +64,15 @@ class MathPhysicsApp {
         document.getElementById('problem-container').classList.remove('hidden');
         
         // Update category title
-        const selectedSubject = subjects.find(s => s.id === topic);
-        if (selectedSubject) {
-            document.getElementById('problem-category').textContent = selectedSubject.name;
-        } else {
-            document.getElementById('problem-category').textContent = 'Practice Problems';
+        const subjectName = subjects[subject]?.name || 'Mathematics';
+        let topicName = '';
+        
+        if (subject && topic) {
+            const topicObj = subjects[subject]?.topics.find(t => t.id === topic);
+            topicName = topicObj ? `: ${topicObj.name}` : '';
         }
+        
+        document.getElementById('problem-category').textContent = `${subjectName}${topicName}`;
         
         // Load first problem
         this.loadNewProblem();
@@ -86,6 +89,7 @@ class MathPhysicsApp {
         // Reset input and feedback
         answerInput.value = '';
         answerInput.disabled = false;
+        document.getElementById('submit-answer').disabled = false;
         answerInput.focus();
         
         // Clear feedback
@@ -265,13 +269,14 @@ class MathPhysicsApp {
             userAnswer: userAnswer
         });
         
-        // If answer is correct, automatically move to next problem after a delay
+        // If the answer is correct, auto-advance after a short delay.
+        // Otherwise, wait for the user to click 'Next Problem'.
         if (isCorrect) {
             setTimeout(() => {
                 this.loadNewProblem();
-            }, 2000); // 2 second delay
+            }, 2000); // 2-second delay
         } else {
-            // Re-enable input for trying again
+            // Re-enable input for another attempt if the answer was wrong
             answerInput.disabled = false;
             submitBtn.disabled = false;
             answerInput.focus();
