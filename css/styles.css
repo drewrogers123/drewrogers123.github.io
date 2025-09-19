@@ -449,6 +449,96 @@ button:hover, .subject-btn:hover {
     border-bottom: none;
 }
 
+/* Tags Selector */
+.tags-selector-container {
+    position: relative;
+}
+
+.tags-search-box {
+    position: relative;
+}
+
+.tags-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tag-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.tag-option:hover {
+    background-color: #f8f9fa;
+}
+
+.tag-option:last-child {
+    border-bottom: none;
+}
+
+.tag-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    min-height: 32px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: #f8f9fa;
+}
+
+.selected-tag {
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    gap: 6px;
+}
+
+.selected-tag .remove-tag {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s;
+}
+
+.selected-tag .remove-tag:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.no-tags-message {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 14px;
+    padding: 4px;
+}
+
 /* Pending Questions */
 .question-card {
     background: #f8f9fa;
@@ -545,5 +635,14 @@ button:hover, .subject-btn:hover {
     
     .question-actions {
         flex-direction: column;
+    }
+    
+    .selected-tags {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .selected-tag {
+        margin-bottom: 4px;
     }
 }

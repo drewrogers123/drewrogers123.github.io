@@ -4,6 +4,8 @@ class TabManager {
         this.currentTab = 'practice';
         this.isAuthenticated = false;
         this.pendingQuestions = JSON.parse(localStorage.getItem('pendingQuestions') || '[]');
+        this.selectedTags = [];
+        this.availableTags = [];
         this.init();
     }
 
@@ -11,6 +13,7 @@ class TabManager {
         this.setupTabNavigation();
         this.setupAddQuestionForm();
         this.setupAuthForm();
+        this.setupTagSelector();
         this.populateTopicSelect();
     }
 
@@ -65,6 +68,13 @@ class TabManager {
             this.updateTopicOptions(subjectSelect.value);
         });
 
+        // Update tags when topic changes
+        topicSelect.addEventListener('change', () => {
+            const subject = subjectSelect.value;
+            const topic = topicSelect.value;
+            this.updateAvailableTags(subject, topic);
+        });
+
         // Handle form submission
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -91,6 +101,129 @@ class TabManager {
                 topicSelect.appendChild(option);
             });
         }
+
+        // Update available tags based on subject
+        this.updateAvailableTags(subject);
+    }
+
+    // Tag Selector Setup
+    setupTagSelector() {
+        const searchInput = document.getElementById('tags-search');
+        const dropdown = document.getElementById('tags-dropdown');
+
+        // Handle search input
+        searchInput.addEventListener('input', (e) => {
+            this.filterTags(e.target.value);
+        });
+
+        // Handle focus and blur events
+        searchInput.addEventListener('focus', () => {
+            this.showTagDropdown();
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.tags-selector-container')) {
+                this.hideTagDropdown();
+            }
+        });
+
+        // Initialize with empty tags
+        this.updateSelectedTagsDisplay();
+    }
+
+    updateAvailableTags(subject, topic = null) {
+        this.availableTags = [];
+        
+        if (window.problemBank && window.problemBank.availableTags && subject) {
+            if (topic && window.problemBank.availableTags[subject][topic]) {
+                // Get tags for specific topic
+                this.availableTags = [...window.problemBank.availableTags[subject][topic]];
+            } else if (window.problemBank.availableTags[subject]) {
+                // Get all tags for the subject
+                Object.values(window.problemBank.availableTags[subject]).forEach(topicTags => {
+                    this.availableTags = this.availableTags.concat(topicTags);
+                });
+                // Remove duplicates
+                this.availableTags = [...new Set(this.availableTags)];
+            }
+        }
+
+        // Sort tags alphabetically
+        this.availableTags.sort();
+        this.filterTags('');
+    }
+
+    filterTags(searchTerm) {
+        const dropdown = document.getElementById('tags-dropdown');
+        const filteredTags = this.availableTags.filter(tag => 
+            tag.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            !this.selectedTags.includes(tag)
+        );
+
+        dropdown.innerHTML = '';
+
+        if (filteredTags.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'tag-option';
+            noResults.textContent = searchTerm ? 'No matching tags found' : 'No tags available';
+            noResults.style.fontStyle = 'italic';
+            noResults.style.color = '#6c757d';
+            dropdown.appendChild(noResults);
+        } else {
+            filteredTags.forEach(tag => {
+                const option = document.createElement('div');
+                option.className = 'tag-option';
+                option.textContent = tag;
+                option.addEventListener('click', () => this.selectTag(tag));
+                dropdown.appendChild(option);
+            });
+        }
+    }
+
+    selectTag(tag) {
+        if (!this.selectedTags.includes(tag)) {
+            this.selectedTags.push(tag);
+            this.updateSelectedTagsDisplay();
+            this.filterTags(document.getElementById('tags-search').value);
+            document.getElementById('tags-search').value = '';
+        }
+    }
+
+    removeTag(tag) {
+        this.selectedTags = this.selectedTags.filter(t => t !== tag);
+        this.updateSelectedTagsDisplay();
+        this.filterTags(document.getElementById('tags-search').value);
+    }
+
+    updateSelectedTagsDisplay() {
+        const container = document.getElementById('selected-tags');
+        container.innerHTML = '';
+
+        if (this.selectedTags.length === 0) {
+            const message = document.createElement('div');
+            message.className = 'no-tags-message';
+            message.textContent = 'No tags selected. Search and click to add tags.';
+            container.appendChild(message);
+        } else {
+            this.selectedTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'selected-tag';
+                tagElement.innerHTML = `
+                    <span>${tag}</span>
+                    <span class="remove-tag" onclick="tabManager.removeTag('${tag}')">&times;</span>
+                `;
+                container.appendChild(tagElement);
+            });
+        }
+    }
+
+    showTagDropdown() {
+        document.getElementById('tags-dropdown').classList.remove('hidden');
+    }
+
+    hideTagDropdown() {
+        document.getElementById('tags-dropdown').classList.add('hidden');
     }
 
     submitQuestion() {
@@ -101,7 +234,7 @@ class TabManager {
             question: document.getElementById('question-input').value,
             answer: document.getElementById('answer-input-form').value,
             solution: document.getElementById('solution-input').value,
-            tags: document.getElementById('tags-input').value.split(',').map(tag => tag.trim()).filter(tag => tag),
+            tags: [...this.selectedTags], // Use selected tags array
             difficulty: parseInt(document.getElementById('difficulty-input').value),
             status: 'pending',
             submittedAt: new Date().toISOString()
@@ -128,6 +261,8 @@ class TabManager {
 
         // Reset form
         document.getElementById('add-question-form').reset();
+        this.selectedTags = [];
+        this.updateSelectedTagsDisplay();
         this.updateTopicOptions('');
     }
 

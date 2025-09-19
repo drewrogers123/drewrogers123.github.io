@@ -139,8 +139,18 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="tags-input">Tags (comma-separated):</label>
-                        <input type="text" id="tags-input" placeholder="e.g., quadratics, factoring, algebra">
+                        <label for="tags-selector">Tags:</label>
+                        <div class="tags-selector-container">
+                            <div class="tags-search-box">
+                                <input type="text" id="tags-search" placeholder="Search tags..." autocomplete="off">
+                                <div id="tags-dropdown" class="tags-dropdown hidden">
+                                    <!-- Available tags will be populated here -->
+                                </div>
+                            </div>
+                            <div class="selected-tags" id="selected-tags">
+                                <!-- Selected tags will appear here -->
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-group">

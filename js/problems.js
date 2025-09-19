@@ -17,6 +17,109 @@ const problemBank = {
         research: { min: 91, max: 100, name: "Research Level" }
     },
     
+    // Predefined tags for problems
+    availableTags: {
+        math: {
+            algebra: [
+                "linear equations", "quadratic equations", "polynomial equations", "systems of equations",
+                "inequalities", "absolute value", "factoring", "quadratics", "solving for x",
+                "distributive property", "algebraic expressions", "rational expressions",
+                "exponential equations", "logarithms", "inverse functions", "domain and range"
+            ],
+            calculus: [
+                "derivatives", "power rule", "product rule", "quotient rule", "chain rule",
+                "implicit differentiation", "related rates", "optimization", "integrals",
+                "definite integrals", "indefinite integrals", "integration by parts",
+                "substitution method", "limits", "continuity", "trigonometric derivatives",
+                "exponential derivatives", "logarithmic derivatives", "fundamental theorem",
+                "Taylor series", "infinite series", "convergence", "divergence"
+            ],
+            geometry: [
+                "area", "perimeter", "volume", "surface area", "triangles", "rectangles",
+                "circles", "polygons", "coordinate geometry", "distance formula",
+                "midpoint formula", "slope", "parallel lines", "perpendicular lines",
+                "angles", "similar triangles", "congruent triangles", "Pythagorean theorem",
+                "trigonometry", "sine", "cosine", "tangent", "proofs"
+            ],
+            trigonometry: [
+                "special angles", "unit circle", "trigonometric identities", "sine rule",
+                "cosine rule", "trigonometric equations", "inverse trigonometric functions",
+                "amplitude", "period", "phase shift", "graphing", "radians", "degrees"
+            ],
+            "linear-algebra": [
+                "matrices", "determinant", "eigenvalues", "eigenvectors", "matrix operations",
+                "matrix multiplication", "inverse matrix", "linear transformations",
+                "vector spaces", "basis", "dimension", "linear independence",
+                "systems of linear equations", "Gaussian elimination", "rank"
+            ],
+            probability: [
+                "basic probability", "conditional probability", "independent events",
+                "mutually exclusive events", "combinations", "permutations",
+                "probability distributions", "normal distribution", "binomial distribution",
+                "expected value", "variance", "standard deviation", "Bayes theorem"
+            ],
+            statistics: [
+                "mean", "median", "mode", "range", "variance", "standard deviation",
+                "descriptive statistics", "inferential statistics", "hypothesis testing",
+                "confidence intervals", "correlation", "regression", "sampling",
+                "population", "sample", "z-score", "t-test", "chi-square"
+            ],
+            "discrete-math": [
+                "combinatorics", "permutations", "combinations", "graph theory",
+                "mathematical induction", "recursion", "sequences", "series",
+                "logic", "set theory", "relations", "functions", "proof techniques",
+                "number theory", "modular arithmetic", "algorithms"
+            ]
+        },
+        physics: {
+            mechanics: [
+                "kinematics", "dynamics", "force", "acceleration", "velocity", "displacement",
+                "Newton's laws", "friction", "circular motion", "projectile motion",
+                "work", "energy", "kinetic energy", "potential energy", "momentum",
+                "impulse", "conservation laws", "collisions", "rotational motion",
+                "torque", "angular momentum", "simple harmonic motion", "oscillations"
+            ],
+            electromagnetism: [
+                "electric field", "electric potential", "capacitance", "current",
+                "resistance", "Ohm's law", "circuits", "magnetic field",
+                "electromagnetic induction", "Faraday's law", "Lenz's law",
+                "Maxwell's equations", "electromagnetic waves", "AC circuits",
+                "DC circuits", "transformers", "generators", "motors"
+            ],
+            thermodynamics: [
+                "temperature", "heat", "thermal equilibrium", "first law",
+                "second law", "entropy", "enthalpy", "heat engines", "refrigerators",
+                "Carnot cycle", "ideal gas", "kinetic theory", "phase transitions",
+                "specific heat", "thermal expansion", "heat transfer"
+            ],
+            optics: [
+                "reflection", "refraction", "Snell's law", "total internal reflection",
+                "lenses", "mirrors", "ray optics", "wave optics", "interference",
+                "diffraction", "polarization", "optical instruments", "dispersion",
+                "electromagnetic spectrum", "photons", "wave-particle duality"
+            ],
+            quantum: [
+                "quantum mechanics", "wave function", "Schrödinger equation",
+                "uncertainty principle", "quantum states", "observables",
+                "measurement", "superposition", "entanglement", "particle in a box",
+                "harmonic oscillator", "hydrogen atom", "spin", "angular momentum",
+                "photon energy", "photoelectric effect", "Compton scattering"
+            ],
+            relativity: [
+                "special relativity", "general relativity", "time dilation",
+                "length contraction", "mass-energy equivalence", "Lorentz transformation",
+                "spacetime", "four-vectors", "gravitational waves", "black holes",
+                "cosmology", "reference frames", "simultaneity"
+            ],
+            waves: [
+                "wave equation", "frequency", "wavelength", "amplitude", "phase",
+                "interference", "standing waves", "resonance", "Doppler effect",
+                "sound waves", "electromagnetic waves", "wave speed",
+                "mechanical waves", "transverse waves", "longitudinal waves"
+            ]
+        }
+    },
+    
     // Problem templates by subject and topic
     problems: {
         math: {
