@@ -1,6 +1,6 @@
-/* Base Theme System - Logical Color Groups */
+/* Base Theme System - Windsurf/VSCode Font Stack */
 :root {
-    --font-family: 'Segoe UI', 'Segoe UI Web', 'Segoe UI Symbol', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #e1e5e9;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
     --data-warning: #f59e0b;    /* Streak count color */
 }
 
-/* 1. One Dark Pro - Most Popular Dark Theme */
+/* 1. One Dark Pro - Official VSCode Theme */
 [data-theme="one-dark-pro"] {
     --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
@@ -72,10 +72,10 @@
     --data-warning: #e5c07b;
 }
 
-/* 2. Dracula - Popular Vampire Theme */
+/* 2. Dracula - Official Dracula Theme */
 [data-theme="dracula"] {
-    --font-family: 'Victor Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    --code-font: 'Victor Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #44475a;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     
@@ -106,10 +106,10 @@
     --data-warning: #f1fa8c;
 }
 
-/* 3. GitHub Dark - Clean Professional Theme */
+/* 3. GitHub Dark - Official GitHub Theme */
 [data-theme="github-dark"] {
-    --font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
-    --code-font: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #30363d;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
@@ -142,8 +142,8 @@
 
 /* 4. Monokai - Classic Sublime Text Theme */
 [data-theme="monokai"] {
-    --font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
-    --code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #49483e;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
@@ -176,8 +176,8 @@
 
 /* 5. Solarized Dark - Eye-friendly Theme */
 [data-theme="solarized-dark"] {
-    --font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Cascadia Code', 'Inconsolata', 'Liberation Mono', 'DejaVu Sans Mono', monospace;
-    --code-font: 'Source Code Pro', 'Menlo', 'Monaco', 'Cascadia Code', 'Inconsolata', 'Liberation Mono', 'DejaVu Sans Mono', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #073642;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
@@ -210,8 +210,8 @@
 
 /* 6. Material Theme - Google Material Design */
 [data-theme="material-theme"] {
-    --font-family: 'Roboto Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
-    --code-font: 'Roboto Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #37474f;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     
@@ -244,8 +244,8 @@
 
 /* 7. Nord - Arctic Blue Theme */
 [data-theme="nord"] {
-    --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Source Code Pro', 'Consolas', monospace;
-    --code-font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Source Code Pro', 'Consolas', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #3b4252;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     
@@ -278,8 +278,8 @@
 
 /* 8. Tokyo Night - Modern Dark Theme */
 [data-theme="tokyo-night"] {
-    --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Victor Mono', 'SF Mono', 'Monaco', 'Roboto Mono', monospace;
-    --code-font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Victor Mono', 'SF Mono', 'Monaco', 'Roboto Mono', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #24283b;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
@@ -312,8 +312,8 @@
 
 /* 9. Catppuccin Mocha - Pastel Dark Theme */
 [data-theme="catppuccin"] {
-    --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Victor Mono', 'SF Mono', 'Roboto Mono', 'Source Code Pro', monospace;
-    --code-font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Victor Mono', 'SF Mono', 'Roboto Mono', 'Source Code Pro', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #313244;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
@@ -346,8 +346,8 @@
 
 /* 10. Gruvbox Dark - Retro Warm Theme */
 [data-theme="gruvbox"] {
-    --font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Ubuntu Mono', 'Source Code Pro', 'Inconsolata', 'Monaco', monospace;
-    --code-font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Ubuntu Mono', 'Source Code Pro', 'Inconsolata', 'Monaco', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #3c3836;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     
@@ -380,8 +380,8 @@
 
 /* 11. Synthwave '84 - Retro Neon Theme */
 [data-theme="synthwave"] {
-    --font-family: 'Victor Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Roboto Mono', monospace;
-    --code-font: 'Victor Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Roboto Mono', monospace;
+    --font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
+    --code-font: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', 'Menlo', 'Consolas', monospace;
     --border-color: #ff006e;
     --shadow: 0 4px 20px rgba(255, 0, 110, 0.3);
     
