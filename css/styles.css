@@ -13,6 +13,21 @@
     --accent-color: #e1f0ff;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+    
+    /* Extended color palette */
+    --title-color: #2c3e50;
+    --tab-color: #3498db;
+    --tab-active-color: #2980b9;
+    --math-color: #e67e22;
+    --physics-color: #9b59b6;
+    --progress-header-color: #34495e;
+    --correct-color: #27ae60;
+    --incorrect-color: #e74c3c;
+    --streak-color: #f39c12;
+    --stats-number-color: #2c3e50;
+    --section-header-color: #34495e;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
 }
 
 /* One Dark Pro Theme */
@@ -30,6 +45,21 @@
     --accent-color: #3e4451;
     --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    
+    /* Extended color palette */
+    --title-color: #e5c07b;
+    --tab-color: #61afef;
+    --tab-active-color: #528bff;
+    --math-color: #d19a66;
+    --physics-color: #c678dd;
+    --progress-header-color: #e06c75;
+    --correct-color: #98c379;
+    --incorrect-color: #e06c75;
+    --streak-color: #e5c07b;
+    --stats-number-color: #56b6c2;
+    --section-header-color: #61afef;
+    --warning-color: #e5c07b;
+    --info-color: #61afef;
 }
 
 /* Dracula Official Theme */
@@ -47,6 +77,21 @@
     --accent-color: #44475a;
     --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    
+    /* Extended color palette */
+    --title-color: #ff79c6;
+    --tab-color: #bd93f9;
+    --tab-active-color: #9580ff;
+    --math-color: #ffb86c;
+    --physics-color: #8be9fd;
+    --progress-header-color: #ff79c6;
+    --correct-color: #50fa7b;
+    --incorrect-color: #ff5555;
+    --streak-color: #f1fa8c;
+    --stats-number-color: #8be9fd;
+    --section-header-color: #bd93f9;
+    --warning-color: #ffb86c;
+    --info-color: #8be9fd;
 }
 
 /* GitHub Dark Theme */
@@ -64,6 +109,21 @@
     --accent-color: #21262d;
     --font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     --code-font: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    
+    /* Extended color palette */
+    --title-color: #f0883e;
+    --tab-color: #58a6ff;
+    --tab-active-color: #409cff;
+    --math-color: #ffa657;
+    --physics-color: #a5a5ff;
+    --progress-header-color: #f85149;
+    --correct-color: #56d364;
+    --incorrect-color: #f85149;
+    --streak-color: #d29922;
+    --stats-number-color: #79c0ff;
+    --section-header-color: #58a6ff;
+    --warning-color: #d29922;
+    --info-color: #58a6ff;
 }
 
 /* Monokai Theme */
@@ -81,6 +141,21 @@
     --accent-color: #49483e;
     --font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     --code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    
+    /* Extended color palette */
+    --title-color: #fd971f;
+    --tab-color: #66d9ef;
+    --tab-active-color: #4dc6ef;
+    --math-color: #fd971f;
+    --physics-color: #ae81ff;
+    --progress-header-color: #f92672;
+    --correct-color: #a6e22e;
+    --incorrect-color: #f92672;
+    --streak-color: #e6db74;
+    --stats-number-color: #66d9ef;
+    --section-header-color: #66d9ef;
+    --warning-color: #fd971f;
+    --info-color: #66d9ef;
 }
 
 /* Solarized Dark Theme */
@@ -98,6 +173,21 @@
     --accent-color: #073642;
     --font-family: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
     --code-font: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
+    
+    /* Extended color palette */
+    --title-color: #cb4b16;
+    --tab-color: #268bd2;
+    --tab-active-color: #2aa198;
+    --math-color: #cb4b16;
+    --physics-color: #6c71c4;
+    --progress-header-color: #d33682;
+    --correct-color: #859900;
+    --incorrect-color: #dc322f;
+    --streak-color: #b58900;
+    --stats-number-color: #2aa198;
+    --section-header-color: #268bd2;
+    --warning-color: #b58900;
+    --info-color: #268bd2;
 }
 
 /* Material Theme */
@@ -115,6 +205,21 @@
     --accent-color: #37474f;
     --font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
     --code-font: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
+    
+    /* Extended color palette */
+    --title-color: #ffcb6b;
+    --tab-color: #82aaff;
+    --tab-active-color: #6c9eff;
+    --math-color: #f78c6c;
+    --physics-color: #c792ea;
+    --progress-header-color: #ff5370;
+    --correct-color: #c3e88d;
+    --incorrect-color: #f07178;
+    --streak-color: #ffcb6b;
+    --stats-number-color: #89ddff;
+    --section-header-color: #82aaff;
+    --warning-color: #ffcb6b;
+    --info-color: #89ddff;
 }
 
 /* Nord Theme */
@@ -132,6 +237,21 @@
     --accent-color: #3b4252;
     --font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
     --code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    
+    /* Extended color palette */
+    --title-color: #d08770;
+    --tab-color: #88c0d0;
+    --tab-active-color: #81a1c1;
+    --math-color: #d08770;
+    --physics-color: #b48ead;
+    --progress-header-color: #bf616a;
+    --correct-color: #a3be8c;
+    --incorrect-color: #bf616a;
+    --streak-color: #ebcb8b;
+    --stats-number-color: #8fbcbb;
+    --section-header-color: #5e81ac;
+    --warning-color: #ebcb8b;
+    --info-color: #88c0d0;
 }
 
 * {
@@ -170,12 +290,30 @@ header {
 .header-text {
     text-align: center;
     flex: 1;
+    font-family: var(--font-family);
 }
 
 h1 {
-    color: var(--primary-color);
+    color: var(--title-color);
     margin-bottom: 10px;
     font-family: var(--font-family);
+}
+
+.category h3 {
+    margin-bottom: 10px;
+}
+
+.category h3:first-of-type {
+    color: var(--math-color);
+}
+
+.category h3:last-of-type {
+    color: var(--physics-color);
+}
+
+.subject-selection h2 {
+    color: var(--section-header-color);
+    margin-bottom: 10px;
 }
 
 /* Theme Selector */
@@ -227,6 +365,21 @@ h1 {
     padding: 15px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
+}
+
+.category h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Mathematics section */
+.category:first-child h3 {
+    color: var(--math-color);
+}
+
+/* Physics section */
+.category:last-child h3 {
+    color: var(--physics-color);
 }
 
 .subject-buttons {
@@ -492,11 +645,55 @@ button:hover, .subject-btn:hover {
     box-shadow: var(--shadow);
 }
 
+.progress-container h3 {
+    color: var(--progress-header-color);
+    margin-bottom: 15px;
+}
+
 #progress-stats {
     display: flex;
     justify-content: space-around;
     margin-top: 15px;
     text-align: center;
+}
+
+#progress-stats > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Progress stat labels */
+#progress-stats > div:first-child {
+    color: var(--correct-color);
+}
+
+#progress-stats > div:nth-child(2) {
+    color: var(--incorrect-color);
+}
+
+#progress-stats > div:last-child {
+    color: var(--streak-color);
+}
+
+/* Progress stat numbers */
+#correct-count {
+    color: var(--stats-number-color);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#incorrect-count {
+    color: var(--stats-number-color);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#streak-count {
+    color: var(--stats-number-color);
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 /* Tab Navigation */
@@ -512,7 +709,7 @@ button:hover, .subject-btn:hover {
     flex: 1;
     padding: 15px 20px;
     background: var(--hover-color);
-    color: var(--text-color);
+    color: var(--tab-color);
     border: none;
     border-radius: 8px 8px 0 0;
     cursor: pointer;
@@ -525,12 +722,13 @@ button:hover, .subject-btn:hover {
 
 .tab-btn:hover {
     background: var(--accent-color);
+    color: var(--tab-active-color);
 }
 
 .tab-btn.active {
     background: var(--card-background);
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--primary-color);
+    color: var(--tab-active-color);
+    border-bottom: 3px solid var(--tab-active-color);
 }
 
 /* Tab Content */
@@ -548,6 +746,12 @@ button:hover, .subject-btn:hover {
 
 .tab-panel.active {
     display: block;
+}
+
+.tab-panel h2 {
+    color: var(--section-header-color);
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 /* Form Styles */
@@ -596,7 +800,7 @@ button:hover, .subject-btn:hover {
 
 /* Rating Info */
 .rating-info {
-    background: #f8f9fa;
+    background: var(--hover-color);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
@@ -604,7 +808,7 @@ button:hover, .subject-btn:hover {
 }
 
 .rating-info h3 {
-    color: var(--primary-color);
+    color: var(--section-header-color);
     margin-bottom: 15px;
 }
 
@@ -714,7 +918,7 @@ button:hover, .subject-btn:hover {
 
 /* Pending Questions */
 .question-card {
-    background: #f8f9fa;
+    background: var(--hover-color);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
@@ -722,7 +926,7 @@ button:hover, .subject-btn:hover {
 }
 
 .question-card h4 {
-    color: var(--primary-color);
+    color: var(--section-header-color);
     margin-bottom: 10px;
 }
 
