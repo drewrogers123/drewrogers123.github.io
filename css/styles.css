@@ -1,0 +1,223 @@
+/* Base Styles */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --error-color: #e74c3c;
+    --background-color: #f5f7fa;
+    --text-color: #2c3e50;
+    --border-color: #dfe6e9;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Subject Selection */
+.subject-selection {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.subject-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.category {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.subject-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button, .subject-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+button:hover, .subject-btn:hover {
+    background-color: #2980b9;
+}
+
+.subject-btn {
+    background-color: #e1f0ff;
+    color: var(--primary-color);
+}
+
+.subject-btn:hover {
+    background-color: #cce5ff;
+}
+
+/* Problem Container */
+.problem-container {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.problem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.problem-text {
+    font-size: 18px;
+    margin: 25px 0;
+    min-height: 100px;
+    line-height: 1.8;
+}
+
+/* Answer Section */
+.answer-section {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+#answer-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Feedback */
+.feedback {
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    display: none;
+}
+
+.feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+/* Difficulty Meter */
+.difficulty-meter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.difficulty-bar {
+    width: 150px;
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.difficulty-level {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+    transition: width 0.3s ease;
+}
+
+/* Progress Container */
+.progress-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+#progress-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .subject-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .answer-section {
+        flex-direction: column;
+    }
+    
+    button, #answer-input, .subject-btn {
+        width: 100%;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
