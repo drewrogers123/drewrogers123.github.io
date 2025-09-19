@@ -1,4 +1,4 @@
-/* Base Styles */
+/* Base Styles - OG Theme */
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
@@ -7,6 +7,131 @@
     --text-color: #2c3e50;
     --border-color: #dfe6e9;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --card-background: #ffffff;
+    --input-background: #ffffff;
+    --hover-color: #f8f9fa;
+    --accent-color: #e1f0ff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+/* One Dark Pro Theme */
+[data-theme="one-dark-pro"] {
+    --primary-color: #61afef;
+    --secondary-color: #98c379;
+    --error-color: #e06c75;
+    --background-color: #282c34;
+    --text-color: #abb2bf;
+    --border-color: #3e4451;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-background: #21252b;
+    --input-background: #3e4451;
+    --hover-color: #2c313c;
+    --accent-color: #3e4451;
+    --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* Dracula Official Theme */
+[data-theme="dracula"] {
+    --primary-color: #bd93f9;
+    --secondary-color: #50fa7b;
+    --error-color: #ff5555;
+    --background-color: #282a36;
+    --text-color: #f8f8f2;
+    --border-color: #44475a;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --card-background: #44475a;
+    --input-background: #6272a4;
+    --hover-color: #6272a4;
+    --accent-color: #44475a;
+    --font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --code-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* GitHub Dark Theme */
+[data-theme="github-dark"] {
+    --primary-color: #58a6ff;
+    --secondary-color: #56d364;
+    --error-color: #f85149;
+    --background-color: #0d1117;
+    --text-color: #c9d1d9;
+    --border-color: #30363d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-background: #161b22;
+    --input-background: #21262d;
+    --hover-color: #21262d;
+    --accent-color: #21262d;
+    --font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    --code-font: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+/* Monokai Theme */
+[data-theme="monokai"] {
+    --primary-color: #66d9ef;
+    --secondary-color: #a6e22e;
+    --error-color: #f92672;
+    --background-color: #272822;
+    --text-color: #f8f8f2;
+    --border-color: #49483e;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --card-background: #3e3d32;
+    --input-background: #49483e;
+    --hover-color: #49483e;
+    --accent-color: #49483e;
+    --font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    --code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Solarized Dark Theme */
+[data-theme="solarized-dark"] {
+    --primary-color: #268bd2;
+    --secondary-color: #859900;
+    --error-color: #dc322f;
+    --background-color: #002b36;
+    --text-color: #839496;
+    --border-color: #073642;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-background: #073642;
+    --input-background: #586e75;
+    --hover-color: #586e75;
+    --accent-color: #073642;
+    --font-family: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
+    --code-font: 'Source Code Pro', 'Menlo', 'Monaco', monospace;
+}
+
+/* Material Theme */
+[data-theme="material-theme"] {
+    --primary-color: #82aaff;
+    --secondary-color: #c3e88d;
+    --error-color: #f07178;
+    --background-color: #263238;
+    --text-color: #eeffff;
+    --border-color: #37474f;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-background: #37474f;
+    --input-background: #546e7a;
+    --hover-color: #546e7a;
+    --accent-color: #37474f;
+    --font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
+    --code-font: 'Roboto Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Nord Theme */
+[data-theme="nord"] {
+    --primary-color: #88c0d0;
+    --secondary-color: #a3be8c;
+    --error-color: #bf616a;
+    --background-color: #2e3440;
+    --text-color: #d8dee9;
+    --border-color: #3b4252;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-background: #3b4252;
+    --input-background: #434c5e;
+    --hover-color: #434c5e;
+    --accent-color: #3b4252;
+    --font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
 * {
@@ -16,11 +141,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
     padding: 20px;
+    transition: all 0.3s ease;
 }
 
 .container {
@@ -30,18 +156,59 @@ body {
 }
 
 header {
-    text-align: center;
     margin-bottom: 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-text {
+    text-align: center;
+    flex: 1;
 }
 
 h1 {
     color: var(--primary-color);
     margin-bottom: 10px;
+    font-family: var(--font-family);
+}
+
+/* Theme Selector */
+.theme-selector {
+    position: relative;
+}
+
+.theme-selector select {
+    background: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: var(--font-family);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 150px;
+}
+
+.theme-selector select:hover {
+    border-color: var(--primary-color);
+}
+
+.theme-selector select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
 }
 
 /* Subject Selection */
 .subject-selection {
-    background: white;
+    background: var(--card-background);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
@@ -56,7 +223,7 @@ h1 {
 }
 
 .category {
-    background: #f8f9fa;
+    background: var(--hover-color);
     padding: 15px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
@@ -85,17 +252,17 @@ button:hover, .subject-btn:hover {
 }
 
 .subject-btn {
-    background-color: #e1f0ff;
+    background-color: var(--accent-color);
     color: var(--primary-color);
 }
 
 .subject-btn:hover {
-    background-color: #cce5ff;
+    background-color: var(--hover-color);
 }
 
 /* Problem Container */
 .problem-container {
-    background: white;
+    background: var(--card-background);
     border-radius: 8px;
     padding: 25px;
     box-shadow: var(--shadow);
@@ -131,6 +298,9 @@ button:hover, .subject-btn:hover {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 16px;
+    background: var(--input-background);
+    color: var(--text-color);
+    font-family: var(--font-family);
 }
 
 /* Feedback */
@@ -316,7 +486,7 @@ button:hover, .subject-btn:hover {
 
 /* Progress Container */
 .progress-container {
-    background: white;
+    background: var(--card-background);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--shadow);
@@ -332,7 +502,7 @@ button:hover, .subject-btn:hover {
 /* Tab Navigation */
 .tab-navigation {
     display: flex;
-    background: white;
+    background: var(--card-background);
     border-radius: 8px 8px 0 0;
     box-shadow: var(--shadow);
     margin-bottom: 0;
@@ -341,30 +511,31 @@ button:hover, .subject-btn:hover {
 .tab-btn {
     flex: 1;
     padding: 15px 20px;
-    background: #f8f9fa;
+    background: var(--hover-color);
     color: var(--text-color);
     border: none;
     border-radius: 8px 8px 0 0;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
+    font-family: var(--font-family);
     transition: all 0.2s;
     border-bottom: 3px solid transparent;
 }
 
 .tab-btn:hover {
-    background: #e9ecef;
+    background: var(--accent-color);
 }
 
 .tab-btn.active {
-    background: white;
+    background: var(--card-background);
     color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
 }
 
 /* Tab Content */
 .tab-content {
-    background: white;
+    background: var(--card-background);
     border-radius: 0 0 8px 8px;
     box-shadow: var(--shadow);
     min-height: 500px;
@@ -404,7 +575,9 @@ button:hover, .subject-btn:hover {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 14px;
-    font-family: inherit;
+    font-family: var(--font-family);
+    background: var(--input-background);
+    color: var(--text-color);
     transition: border-color 0.2s;
 }
 
@@ -644,5 +817,20 @@ button:hover, .subject-btn:hover {
     
     .selected-tag {
         margin-bottom: 4px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .theme-selector {
+        order: -1;
+        margin-bottom: 20px;
+    }
+    
+    .theme-selector select {
+        min-width: 120px;
+        font-size: 12px;
     }
 }
