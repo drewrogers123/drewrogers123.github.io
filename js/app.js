@@ -29,6 +29,9 @@ class MathPhysicsApp {
         // Hint button
         document.getElementById('hint-btn').addEventListener('click', () => this.showHint());
         
+        // Back button
+        document.getElementById('back-btn').addEventListener('click', () => this.backToSubjects());
+        
         // Handle Enter key in answer input
         document.getElementById('answer-input').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -78,11 +81,23 @@ class MathPhysicsApp {
     // Load a new problem
     loadNewProblem() {
         // Reset UI
-        document.getElementById('answer-input').value = '';
-        document.getElementById('feedback').className = 'feedback';
-        document.getElementById('feedback').textContent = '';
-        document.getElementById('next-btn').classList.add('hidden');
-        document.getElementById('hint-btn').disabled = false;
+        const answerInput = document.getElementById('answer-input');
+        const feedbackEl = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+        const hintBtn = document.getElementById('hint-btn');
+        
+        // Reset input and feedback
+        answerInput.value = '';
+        answerInput.disabled = false;
+        answerInput.focus();
+        
+        // Clear feedback
+        feedbackEl.className = 'feedback';
+        feedbackEl.textContent = '';
+        
+        // Reset buttons
+        nextBtn.classList.add('hidden');
+        hintBtn.disabled = false;
         
         // Get a new problem
         this.currentProblem = problemBank.getProblem(this.currentSubject, this.currentTopic);
@@ -92,6 +107,9 @@ class MathPhysicsApp {
         
         // Start timer for this problem
         this.startTimer();
+        
+        // Ensure input is focused
+        answerInput.focus();
     }
     
     // Render problem using KaTeX
@@ -99,15 +117,40 @@ class MathPhysicsApp {
         const problemText = document.getElementById('problem-text');
         
         try {
-            // Use KaTeX to render the problem
-            katex.render(problem.question, problemText, {
-                throwOnError: false,
-                displayMode: true
+            // First, clear any existing content
+            problemText.innerHTML = '';
+            
+            // Process the question text to handle LaTeX expressions
+            const parts = problem.question.split(/(\$.*?\$)/g);
+            
+            parts.forEach((part, index) => {
+                if (part.startsWith('$') && part.endsWith('$')) {
+                    // This is a LaTeX expression
+                    const latexExpr = part.slice(1, -1); // Remove the $ delimiters
+                    const span = document.createElement('span');
+                    problemText.appendChild(span);
+                    
+                    try {
+                        katex.render(latexExpr, span, {
+                            throwOnError: false,
+                            displayMode: false,
+                            output: 'html',
+                            strict: false
+                        });
+                    } catch (e) {
+                        console.error('Error rendering LaTeX:', e);
+                        span.textContent = latexExpr;
+                    }
+                } else if (part.trim() !== '') {
+                    // This is regular text
+                    const textNode = document.createTextNode(part);
+                    problemText.appendChild(textNode);
+                }
             });
+            
         } catch (e) {
-            // If KaTeX rendering fails, display as plain text
+            console.error('Error rendering problem:', e);
             problemText.textContent = problem.question;
-            console.error('KaTeX rendering error:', e);
         }
     }
     
@@ -134,6 +177,12 @@ class MathPhysicsApp {
         const userAnswer = document.getElementById('answer-input').value.trim();
         if (!userAnswer) return;
         
+        // Disable input and buttons during feedback
+        const answerInput = document.getElementById('answer-input');
+        const submitBtn = document.getElementById('submit-answer');
+        answerInput.disabled = true;
+        submitBtn.disabled = true;
+        
         // Stop the timer
         const timeSpent = (Date.now() - this.startTime) / 1000; // in seconds
         clearInterval(this.timer);
@@ -146,26 +195,68 @@ class MathPhysicsApp {
         
         // Show feedback
         const feedbackEl = document.getElementById('feedback');
-        feedbackEl.textContent = isCorrect ? 'Correct! 🎉' : `Incorrect. The correct answer is ${this.currentProblem.answer}.`;
-        feedbackEl.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+        feedbackEl.innerHTML = ''; // Clear previous feedback
         
-        // Show solution if available and answer was wrong
-        if (!isCorrect && this.currentProblem.solution) {
+        // Create feedback message
+        const messageEl = document.createElement('div');
+        messageEl.className = `feedback-message ${isCorrect ? 'correct' : 'incorrect'}`;
+        messageEl.textContent = isCorrect ? '✅ Correct! 🎉' : '❌ Incorrect';
+        feedbackEl.appendChild(messageEl);
+        
+        // Show correct answer if wrong
+        if (!isCorrect) {
+            const correctAnswerEl = document.createElement('div');
+            correctAnswerEl.className = 'correct-answer';
+            correctAnswerEl.innerHTML = `The correct answer is: <span class="answer">${this.currentProblem.answer}</span>`;
+            feedbackEl.appendChild(correctAnswerEl);
+        }
+        
+        // Show solution if available
+        if (this.currentProblem.solution) {
             const solutionEl = document.createElement('div');
             solutionEl.className = 'solution';
             solutionEl.style.marginTop = '10px';
-            solutionEl.innerHTML = `<strong>Solution:</strong> ${this.currentProblem.solution}`;
-            feedbackEl.appendChild(solutionEl);
             
-            // Render any LaTeX in the solution
-            katex.render(this.currentProblem.solution, solutionEl, {
-                throwOnError: false,
-                displayMode: true
+            const solutionTitle = document.createElement('div');
+            solutionTitle.className = 'solution-title';
+            solutionTitle.textContent = 'Solution:';
+            solutionEl.appendChild(solutionTitle);
+            
+            const solutionContent = document.createElement('div');
+            solutionContent.className = 'solution-content';
+            
+            // Process the solution text to handle LaTeX
+            const parts = this.currentProblem.solution.split(/(\$.*?\$)/g);
+            parts.forEach(part => {
+                if (part.startsWith('$') && part.endsWith('$')) {
+                    const latexExpr = part.slice(1, -1);
+                    const span = document.createElement('span');
+                    solutionContent.appendChild(span);
+                    
+                    try {
+                        katex.render(latexExpr, span, {
+                            throwOnError: false,
+                            displayMode: false
+                        });
+                    } catch (e) {
+                        console.error('Error rendering solution LaTeX:', e);
+                        span.textContent = latexExpr;
+                    }
+                } else if (part.trim() !== '') {
+                    solutionContent.appendChild(document.createTextNode(part));
+                }
             });
+            
+            solutionEl.appendChild(solutionContent);
+            feedbackEl.appendChild(solutionEl);
         }
         
         // Show next button
-        document.getElementById('next-btn').classList.remove('hidden');
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.classList.remove('hidden');
+        nextBtn.focus();
+        
+        // Disable hint button
         document.getElementById('hint-btn').disabled = true;
         
         // Store problem attempt in history
@@ -176,6 +267,19 @@ class MathPhysicsApp {
             timeSpent: timeSpent,
             userAnswer: userAnswer
         });
+        
+        // If answer is correct, automatically move to next problem after a delay
+        if (isCorrect) {
+            setTimeout(() => {
+                this.loadNewProblem();
+            }, 2000); // 2 second delay
+        } else {
+            // Re-enable input for trying again
+            answerInput.disabled = false;
+            submitBtn.disabled = false;
+            answerInput.focus();
+            answerInput.select();
+        }
     }
     
     // Show a hint for the current problem
@@ -189,6 +293,28 @@ class MathPhysicsApp {
         const feedbackEl = document.getElementById('feedback');
         feedbackEl.textContent = 'Hint: ' + this.currentProblem.solution.split('.')[0] + '.';
         feedbackEl.className = 'feedback';
+    }
+    
+    // Go back to subjects screen
+    backToSubjects() {
+        // Stop any running timers
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+        
+        // Reset current problem
+        this.currentProblem = null;
+        
+        // Show subject selection and hide problem container
+        document.getElementById('subject-selection').classList.remove('hidden');
+        document.getElementById('problem-container').classList.add('hidden');
+        
+        // Reset UI state
+        document.getElementById('answer-input').value = '';
+        document.getElementById('feedback').className = 'feedback';
+        document.getElementById('feedback').textContent = '';
+        document.getElementById('next-btn').classList.add('hidden');
     }
 }
 
