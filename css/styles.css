@@ -472,7 +472,7 @@ h1 {
 }
 
 /* Buttons */
-button, .btn, #submit-answer, #hint-btn, #next-btn, .back-to-subjects, .subject-btn {
+button, .btn, #hint-btn, #next-btn, .back-to-subjects, .subject-btn {
     padding: 10px 20px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -480,8 +480,27 @@ button, .btn, #submit-answer, #hint-btn, #next-btn, .back-to-subjects, .subject-
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: var(--interactive-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 100px;
+    text-decoration: none;
+}
+
+/* Submit button keeps its unique style */
+#submit-answer {
+    padding: 10px 20px;
+    border: 1px solid var(--success);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--success);
+    color: #fff;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -492,11 +511,17 @@ button, .btn, #submit-answer, #hint-btn, #next-btn, .back-to-subjects, .subject-
 
 button:hover:not(:disabled), 
 .btn:hover:not(:disabled), 
-#submit-answer:hover:not(:disabled), 
 #hint-btn:hover:not(:disabled), 
 #next-btn:hover:not(:disabled), 
 .back-to-subjects:hover:not(:disabled),
 .subject-btn:hover:not(:disabled) {
+    background: var(--interactive-primary);
+    color: var(--bg-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#submit-answer:hover:not(:disabled) {
     opacity: 0.9;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -529,38 +554,33 @@ button:disabled,
 }
 
 /* Specific button styles */
-#submit-answer {
-    background: var(--success);
-    color: #fff;
-    border: 1px solid var(--success);
-}
-
 #hint-btn {
-    background: var(--warning);
-    color: #000;
-    border: 1px solid var(--warning);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
 #next-btn {
-    background: var(--info);
-    color: #000;
-    border: 1px solid var(--info);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
 .back-to-subjects {
-    background: transparent;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
     border: 1px solid var(--border-color);
     margin-top: 10px;
 }
 
 .back-to-subjects:hover {
-    background: var(--bg-tertiary);
-    color: var(--interactive-primary);
+    background: var(--interactive-primary);
+    color: var(--bg-primary);
 }
 
 /* Subject topic buttons (algebra, calculus, mechanics, etc.) */
 .subject-btn {
-    background: var(--interactive-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
     padding: 12px 20px;
