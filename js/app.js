@@ -121,31 +121,35 @@ class MathPhysicsApp {
             // First, clear any existing content
             problemText.innerHTML = '';
             
-            // Process the question text to handle LaTeX expressions
-            const parts = problem.question.split(/(\$.*?\$)/g);
-            
-            parts.forEach((part, index) => {
-                if (part.startsWith('$') && part.endsWith('$')) {
-                    // This is a LaTeX expression
-                    const latexExpr = part.slice(1, -1); // Remove the $ delimiters
-                    const span = document.createElement('span');
-                    problemText.appendChild(span);
-                    
-                    try {
-                        katex.render(latexExpr, span, {
-                            throwOnError: false,
-                            displayMode: false,
-                            output: 'html',
-                            strict: false
-                        });
-                    } catch (e) {
-                        console.error('Error rendering LaTeX:', e);
-                        span.textContent = latexExpr;
+            // Process the question text to handle both inline ($) and display ($$) LaTeX
+            const parts = problem.question.split(/(\$\$.*?\$\$|\$.*?\$)/g);
+
+            parts.forEach(part => {
+                if (part) { // Filter out empty strings from split
+                    let isDisplay = false;
+                    let latexExpr = '';
+
+                    if (part.startsWith('$$') && part.endsWith('$$')) {
+                        isDisplay = true;
+                        latexExpr = part.slice(2, -2);
+                    } else if (part.startsWith('$') && part.endsWith('$')) {
+                        isDisplay = false;
+                        latexExpr = part.slice(1, -1);
                     }
-                } else if (part.trim() !== '') {
-                    // This is regular text
-                    const textNode = document.createTextNode(part);
-                    problemText.appendChild(textNode);
+
+                    if (latexExpr) {
+                        const container = document.createElement(isDisplay ? 'div' : 'span');
+                        container.className = isDisplay ? 'latex-display' : 'latex-inline';
+                        problemText.appendChild(container);
+                        try {
+                            katex.render(latexExpr, container, { throwOnError: false, displayMode: isDisplay });
+                        } catch (e) {
+                            console.error('KaTeX rendering error:', e);
+                            container.textContent = latexExpr;
+                        }
+                    } else {
+                        problemText.appendChild(document.createTextNode(part));
+                    }
                 }
             });
             
@@ -226,25 +230,33 @@ class MathPhysicsApp {
             const solutionContent = document.createElement('div');
             solutionContent.className = 'solution-content';
             
-            // Process the solution text to handle LaTeX
-            const parts = this.currentProblem.solution.split(/(\$.*?\$)/g);
+            // Process the solution text to handle both inline ($) and display ($$) LaTeX
+            const parts = this.currentProblem.solution.split(/(\$\$.*?\$\$|\$.*?\$)/g);
             parts.forEach(part => {
-                if (part.startsWith('$') && part.endsWith('$')) {
-                    const latexExpr = part.slice(1, -1);
-                    const span = document.createElement('span');
-                    solutionContent.appendChild(span);
-                    
-                    try {
-                        katex.render(latexExpr, span, {
-                            throwOnError: false,
-                            displayMode: false
-                        });
-                    } catch (e) {
-                        console.error('Error rendering solution LaTeX:', e);
-                        span.textContent = latexExpr;
+                if (part) { // Filter out empty strings from split
+                    let isDisplay = false;
+                    let latexExpr = '';
+
+                    if (part.startsWith('$$') && part.endsWith('$$')) {
+                        isDisplay = true;
+                        latexExpr = part.slice(2, -2);
+                    } else if (part.startsWith('$') && part.endsWith('$')) {
+                        isDisplay = false;
+                        latexExpr = part.slice(1, -1);
                     }
-                } else if (part.trim() !== '') {
-                    solutionContent.appendChild(document.createTextNode(part));
+
+                    if (latexExpr) {
+                        const container = document.createElement(isDisplay ? 'div' : 'span');
+                        solutionContent.appendChild(container);
+                        try {
+                            katex.render(latexExpr, container, { throwOnError: false, displayMode: isDisplay });
+                        } catch (e) {
+                            console.error('KaTeX rendering error:', e);
+                            container.textContent = latexExpr;
+                        }
+                    } else {
+                        solutionContent.appendChild(document.createTextNode(part));
+                    }
                 }
             });
             

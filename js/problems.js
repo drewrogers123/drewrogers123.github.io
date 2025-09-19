@@ -40,7 +40,7 @@ const problemBank = {
                 {
                     id: 'calc2',
                     difficulty: 4,
-                    question: "Evaluate the definite integral: $\int_{0}^{1} (x^2 + 1) dx$",
+                    question: "Evaluate the definite integral: $$\int_{0}^{1} (x^2 + 1) dx$$",
                     answer: "4/3",
                     solution: "The integral of $x^2$ is $\frac{x^3}{3}$ and the integral of 1 is $x$. Evaluating from 0 to 1 gives $(\frac{1^3}{3} + 1) - (\frac{0^3}{3} + 0) = \frac{1}{3} + 1 = \frac{4}{3}$."
                 },

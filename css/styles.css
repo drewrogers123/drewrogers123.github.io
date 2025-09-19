@@ -222,6 +222,12 @@ button:hover, .subject-btn:hover {
     cursor: not-allowed;
 }
 
+.latex-display {
+    display: block;
+    margin: 1em 0;
+    text-align: center;
+}
+
 /* Navigation Buttons */
 .navigation-buttons {
     display: flex;
