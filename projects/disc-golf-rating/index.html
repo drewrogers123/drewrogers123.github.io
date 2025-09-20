@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +5,7 @@
     <title>Disc Golf Rating Calculator</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
 </head>
 <body>
     <div class="container">
@@ -13,22 +13,125 @@
             <div class="header-content">
                 <div class="header-text">
                     <h1>Disc Golf Rating Calculator</h1>
-                    <p>Calculate and track your disc golf performance ratings</p>
+                    <p>Calculate Elo-based ratings from disc golf tournament scores</p>
                 </div>
             </div>
         </header>
 
         <main>
             <div class="calculator-section">
-                <h2>Rating Calculator</h2>
-                <div class="calculator-form">
-                    <!-- Calculator content will go here -->
-                    <p>Disc Golf Rating Calculator coming soon...</p>
+                <h2>Elo-Based Rating Calculator</h2>
+
+                <div class="upload-section">
+                    <h3>Upload Your Scores</h3>
+                    <div class="upload-area">
+                        <input type="file" id="excelFile" accept=".xlsx,.xls" style="display: none;">
+                        <div class="upload-prompt">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10,9 9,9 8,9"></polyline>
+                            </svg>
+                            <p>Click to select Excel file or drag and drop</p>
+                            <small>Supports .xlsx and .xls files</small>
+                        </div>
+                    </div>
+
+                    <div class="options-section">
+                        <h4>Calculation Options</h4>
+                        <div class="option-group">
+                            <label for="sheetName">Sheet Name:</label>
+                            <input type="text" id="sheetName" value="Sheet1" placeholder="Sheet1">
+                        </div>
+                        <div class="option-group">
+                            <label for="printTopN">Show Top N Players:</label>
+                            <input type="number" id="printTopN" value="25" min="1">
+                        </div>
+                        <div class="option-group checkbox-group">
+                            <label for="useMOV">
+                                <input type="checkbox" id="useMOV" checked>
+                                Use Margin of Victory weighting
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="calculateBtn" class="btn btn-primary" disabled>
+                        Calculate Ratings
+                    </button>
+                </div>
+
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <h3>Results</h3>
+                    <div class="results-tabs">
+                        <button class="tab-btn active" data-tab="ratings">Final Ratings</button>
+                        <button class="tab-btn" data-tab="history">History</button>
+                        <button class="tab-btn" data-tab="snapshots">Snapshots</button>
+                    </div>
+
+                    <div id="ratingsTab" class="tab-content active">
+                        <div class="table-container">
+                            <table id="ratingsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Player</th>
+                                        <th>Rating</th>
+                                        <th>Games</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="historyTab" class="tab-content">
+                        <div class="table-container">
+                            <table id="historyTable">
+                                <thead>
+                                    <tr>
+                                        <th>Player</th>
+                                        <th>Rating</th>
+                                        <th>Change</th>
+                                        <th>Games</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="snapshotsTab" class="tab-content">
+                        <div class="table-container">
+                            <table id="snapshotsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Player</th>
+                                        <th>Rating</th>
+                                        <th>After Round</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="download-section">
+                        <button id="downloadExcel" class="btn btn-secondary">Download Excel Results</button>
+                        <button id="downloadCsv" class="btn btn-outline">Download CSV Results</button>
+                    </div>
+                </div>
+
+                <div id="loadingSection" class="loading-section" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Calculating ratings...</p>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/web-calculator.js"></script>
 </body>
 </html>
