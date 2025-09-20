@@ -260,6 +260,19 @@ class MathPhysicsApp {
         problemBank.updateDifficulty(isCorrect);
         
         // Show feedback
+        const feedbackEl = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+        
+        if (isCorrect) {
+            feedbackEl.className = 'feedback correct';
+            feedbackEl.textContent = 'Correct!';
+        } else {
+            feedbackEl.className = 'feedback incorrect';
+            feedbackEl.textContent = 'Incorrect. Try again!';
+        }
+        
+        // Show next button
+        nextBtn.classList.remove('hidden');
         nextBtn.focus();
         
         // Store problem attempt in history
