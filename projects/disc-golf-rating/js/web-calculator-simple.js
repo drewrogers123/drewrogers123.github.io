@@ -380,7 +380,6 @@ function displayResults(results) {
                     <td>${rating.rank}</td>
                     <td>${rating.player}</td>
                     <td>${rating.rating}</td>
-                    <td>${rating.games}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -399,7 +398,6 @@ function displayResults(results) {
                     <td>${player.player}</td>
                     <td>${player.rating}</td>
                     <td>${player.change >= 0 ? '+' : ''}${player.change}</td>
-                    <td>${player.games}</td>
                 `;
                 tbody.appendChild(row);
             });
