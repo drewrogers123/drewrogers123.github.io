@@ -125,11 +125,26 @@ const problemBank = {
         math: {
             algebra: [
                 {
+                    id: 'alg1-mc',
+                    difficulty: 15,
+                    type: 'multiple-choice',
+                    question: "Solve for x: $2x + 5 = 15$",
+                    answer1: "3",
+                    answer2: "4",
+                    answer3: "5",
+                    answer4: "6",
+                    correct: "answer3",
+                    solution: "Subtract 5 from both sides to get $2x = 10$. Divide by 2 to get $x = 5$.",
+                    tags: ["linear equations"]
+                },
+                {
                     id: 'alg1',
                     difficulty: 15,
+                    type: 'short-answer',
                     question: "Solve for x: $2x + 5 = 15$",
                     answer: "5",
-                    solution: "Subtract 5 from both sides to get $2x = 10$. Divide by 2 to get $x = 5$."
+                    solution: "Subtract 5 from both sides to get $2x = 10$. Divide by 2 to get $x = 5$.",
+                    tags: ["linear equations"]
                 },
                 {
                     id: 'alg2',
@@ -301,16 +316,12 @@ const problemBank = {
     
     // Check if the answer is correct
     checkAnswer: function(problem, userAnswer) {
-        const normalizedUserAnswer = userAnswer.replace(/\s+/g, '').toLowerCase();
-
-        if (Array.isArray(problem.answer)) {
-            // If the answer is an array, check if the user's answer is one of the valid options
-            return problem.answer.some(ans => ans.replace(/\s+/g, '').toLowerCase() === normalizedUserAnswer);
-        } else {
-            // Otherwise, perform a direct string comparison
-            const normalizedCorrectAnswer = problem.answer.replace(/\s+/g, '').toLowerCase();
-            return normalizedCorrectAnswer === normalizedUserAnswer;
+        // Handle multiple choice questions
+        if (problem.type === 'multiple-choice' && problem.correct) {
+            return userAnswer === problem.correct;
         }
+        // Handle short answer questions
+        return problem.answer.toLowerCase().trim() === String(userAnswer).toLowerCase().trim();
     },
     
     // Update difficulty based on user performance

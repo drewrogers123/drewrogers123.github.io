@@ -1057,6 +1057,79 @@ button:hover {
     margin: 20px 0;
 }
 
+/* Multiple Choice Styles */
+.mc-section {
+    margin: 20px 0;
+}
+
+.mc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mc-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mc-option:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.mc-option input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.mc-option label {
+    cursor: pointer;
+    flex-grow: 1;
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.mc-option input[type="radio"]:checked + label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.mc-option input[type="radio"]:checked {
+    accent-color: var(--primary-color);
+}
+
+.mc-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mc-submit-btn:hover {
+    background-color: #3a5a80;
+}
+
+.mc-submit-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 .form-group {
     margin-bottom: 20px;
 }

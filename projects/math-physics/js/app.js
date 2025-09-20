@@ -20,12 +20,14 @@ class MathPhysicsApp {
             }
         });
         
-        // Submit answer
+        // Submit answer (short answer)
         document.getElementById('submit-answer').addEventListener('click', () => this.checkAnswer());
+        
+        // Submit answer (multiple choice)
+        document.getElementById('submit-mc-answer').addEventListener('click', () => this.checkAnswer());
         
         // Next problem
         document.getElementById('next-btn').addEventListener('click', () => this.loadNewProblem());
-        
         
         // Back button
         document.getElementById('back-btn').addEventListener('click', () => this.backToSubjects());
@@ -80,6 +82,7 @@ class MathPhysicsApp {
     loadNewProblem() {
         // Reset UI
         const answerInput = document.getElementById('answer-input');
+        const mcOptions = document.getElementById('mc-options');
         const feedbackEl = document.getElementById('feedback');
         const nextBtn = document.getElementById('next-btn');
         
@@ -87,17 +90,29 @@ class MathPhysicsApp {
         answerInput.value = '';
         answerInput.disabled = false;
         document.getElementById('submit-answer').disabled = false;
-        answerInput.focus();
         
-        // Clear feedback
+        // Clear feedback and MC options
         feedbackEl.className = 'feedback';
         feedbackEl.textContent = '';
+        mcOptions.innerHTML = '';
         
         // Reset buttons
         nextBtn.classList.add('hidden');
         
         // Get a new problem
         this.currentProblem = problemBank.getProblem(this.currentSubject, this.currentTopic);
+        
+        // Show/hide appropriate input based on question type
+        const isMultipleChoice = this.currentProblem.type === 'multiple-choice';
+        document.getElementById('answer-section').style.display = isMultipleChoice ? 'none' : 'block';
+        document.getElementById('mc-section').style.display = isMultipleChoice ? 'block' : 'none';
+        
+        // Setup multiple choice options if needed
+        if (isMultipleChoice) {
+            this.setupMultipleChoiceOptions();
+        } else {
+            answerInput.focus();
+        }
         
         // Display the problem
         this.renderProblem(this.currentProblem);
@@ -171,18 +186,55 @@ class MathPhysicsApp {
         }, 1000);
     }
     
+    // Setup multiple choice options
+    setupMultipleChoiceOptions() {
+        const mcOptions = document.getElementById('mc-options');
+        mcOptions.innerHTML = '';
+        
+        // Create radio buttons for each answer choice
+        for (let i = 1; i <= 4; i++) {
+            const answerKey = `answer${i}`;
+            if (this.currentProblem[answerKey] === undefined) continue;
+            
+            const option = document.createElement('div');
+            option.className = 'mc-option';
+            option.innerHTML = `
+                <input type="radio" id="mc-${i}" name="mc-answer" value="answer${i}">
+                <label for="mc-${i}">${this.currentProblem[answerKey]}</label>
+            `;
+            mcOptions.appendChild(option);
+        }
+    }
+    
+    // Get the user's selected answer (for multiple choice)
+    getSelectedAnswer() {
+        const selectedOption = document.querySelector('input[name="mc-answer"]:checked');
+        return selectedOption ? selectedOption.value : null;
+    }
+    
     // Check the user's answer
     checkAnswer() {
         if (!this.currentProblem) return;
         
-        const userAnswer = document.getElementById('answer-input').value.trim();
-        if (!userAnswer) return;
+        let userAnswer;
+        let isMultipleChoice = this.currentProblem.type === 'multiple-choice';
+        
+        if (isMultipleChoice) {
+            userAnswer = this.getSelectedAnswer();
+            if (!userAnswer) return; // No option selected
+        } else {
+            userAnswer = document.getElementById('answer-input').value.trim();
+            if (!userAnswer) return;
+        }
         
         // Disable input and buttons during feedback
         const answerInput = document.getElementById('answer-input');
         const submitBtn = document.getElementById('submit-answer');
+        const mcOptions = document.querySelectorAll('input[name="mc-answer"]');
+        
         answerInput.disabled = true;
         submitBtn.disabled = true;
+        mcOptions.forEach(opt => opt.disabled = true);
         
         // Stop the timer
         const timeSpent = (Date.now() - this.startTime) / 1000; // in seconds

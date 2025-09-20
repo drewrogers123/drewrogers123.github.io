@@ -79,9 +79,18 @@
                 <!-- Problem will be rendered here -->
             </div>
             
-            <div class="answer-section">
+            <!-- Short answer input section -->
+            <div id="answer-section" class="answer-section">
                 <input type="text" id="answer-input" placeholder="Enter your answer...">
                 <button id="submit-answer">Submit</button>
+            </div>
+            
+            <!-- Multiple choice options section -->
+            <div id="mc-section" class="mc-section" style="display: none;">
+                <div id="mc-options" class="mc-options">
+                    <!-- Multiple choice options will be added here by JavaScript -->
+                </div>
+                <button id="submit-mc-answer" class="mc-submit-btn">Submit Answer</button>
             </div>
             
             <div id="feedback" class="feedback"></div>
