@@ -4,7 +4,8 @@ const subjects = {
         name: 'Mathematics',
         topics: [
             { id: 'algebra', name: 'Algebra' },
-            { id: 'calculus', name: 'Calculus' }
+            { id: 'calculus', name: 'Calculus' },
+            { id: 'statistics', name: 'Statistics' }
         ]
     },
     physics: {

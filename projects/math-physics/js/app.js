@@ -165,7 +165,7 @@ class MathPhysicsApp {
         }, 1000);
     }
     
-    // Setup multiple choice options
+    // Setup multiple choice options with LaTeX support
     setupMultipleChoiceOptions() {
         const mcOptions = document.getElementById('mc-options');
         mcOptions.innerHTML = '';
@@ -177,10 +177,44 @@ class MathPhysicsApp {
             
             const option = document.createElement('div');
             option.className = 'mc-option';
-            option.innerHTML = `
-                <input type="radio" id="mc-${i}" name="mc-answer" value="answer${i}">
-                <label for="mc-${i}">${this.currentProblem[answerKey]}</label>
-            `;
+            
+            // Create radio button
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.id = `mc-${i}`;
+            radio.name = 'mc-answer';
+            radio.value = `answer${i}`;
+            
+            // Create label with LaTeX support
+            const label = document.createElement('label');
+            label.htmlFor = `mc-${i}`;
+            
+            // Process the answer text for LaTeX
+            const answerText = this.currentProblem[answerKey];
+            const parts = answerText.split(/(\$.*?\$)/g);
+            
+            parts.forEach(part => {
+                if (part.startsWith('$') && part.endsWith('$')) {
+                    // This is a LaTeX expression
+                    const latexSpan = document.createElement('span');
+                    try {
+                        katex.render(part.slice(1, -1), latexSpan, {
+                            throwOnError: false,
+                            displayMode: false
+                        });
+                    } catch (e) {
+                        console.error('Error rendering LaTeX:', e);
+                        latexSpan.textContent = part;
+                    }
+                    label.appendChild(latexSpan);
+                } else if (part) {
+                    // Regular text
+                    label.appendChild(document.createTextNode(part));
+                }
+            });
+            
+            option.appendChild(radio);
+            option.appendChild(label);
             mcOptions.appendChild(option);
         }
     }
@@ -226,20 +260,6 @@ class MathPhysicsApp {
         problemBank.updateDifficulty(isCorrect);
         
         // Show feedback
-        const feedbackEl = document.getElementById('feedback');
-        feedbackEl.innerHTML = ''; // Clear previous feedback
-        
-        // Create feedback message
-        const messageEl = document.createElement('div');
-        messageEl.className = `feedback-message ${isCorrect ? 'correct' : 'incorrect'}`;
-        messageEl.textContent = isCorrect ? '✅ Correct! 🎉' : '❌ Incorrect';
-        feedbackEl.appendChild(messageEl);
-        
-        // Don't show the correct answer or solution
-        
-        // Show next button
-        const nextBtn = document.getElementById('next-btn');
-        nextBtn.classList.remove('hidden');
         nextBtn.focus();
         
         // Store problem attempt in history
