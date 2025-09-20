@@ -201,8 +201,9 @@ body {
 }
 
 .project-card.featured {
-    border: 2px solid var(--primary-color);
-    background: linear-gradient(135deg, var(--bg-primary), #f8fafc);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
 }
 
 .project-icon {
@@ -250,6 +251,14 @@ body {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+.wip {
+    color: #e11d48; /* Red color for visibility */
+    font-weight: 500;
+    font-size: 0.9em;
+    display: inline-block;
+    margin-top: 8px;
 }
 
 /* About Section */
@@ -331,9 +340,19 @@ footer {
 }
 
 .footer-section ul li a {
-    color: #cbd5e1;
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.2s;
+}
+
+#contact a[href^="mailto:"] {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+#contact a[href^="mailto:"]:hover {
+    color: var(--primary-color);
 }
 
 .footer-section ul li a:hover {
