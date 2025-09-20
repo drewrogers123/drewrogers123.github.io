@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math & Physics Practice</title>
+    <!-- KaTeX for LaTeX rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Math & Physics Practice</h1>
+                    <p>Select a subject to begin practicing problems</p>
+                </div>
+                <div class="theme-selector">
+                    <select id="theme-dropdown">
+                        <option value="og">Default Light</option>
+                        <option value="one-dark-pro">One Dark Pro</option>
+                        <option value="dracula">Dracula</option>
+                        <option value="github-dark">GitHub Dark</option>
+                        <option value="monokai">Monokai</option>
+                        <option value="solarized-dark">Solarized Dark</option>
+                        <option value="material-theme">Material Theme</option>
+                        <option value="nord">Nord</option>
+                        <option value="tokyo-night">Tokyo Night</option>
+                        <option value="catppuccin">Catppuccin</option>
+                        <option value="gruvbox">Gruvbox</option>
+                        <option value="synthwave">Synthwave '84</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="practice">Practice</button>
+            <button class="tab-btn" data-tab="add-questions">Add Questions</button>
+            <button class="tab-btn" data-tab="review">Review Questions</button>
+        </nav>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Practice Tab -->
+            <div id="practice-tab" class="tab-panel active">
+                <div id="subject-selection" class="subject-selection">
+            <h2>Subjects</h2>
+            <div class="subject-categories">
+                <div class="category">
+                    <h3>Mathematics</h3>
+                    <div class="subject-buttons" id="math-buttons">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="category">
+                    <h3>Physics</h3>
+                    <div class="subject-buttons" id="physics-buttons">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="problem-container" class="problem-container hidden">
+            <div class="problem-header">
+                <h2 id="problem-category">Problem</h2>
+                <div class="difficulty-meter">
+                    <span>Difficulty: </span>
+                    <div class="difficulty-bar">
+                        <div id="difficulty-level" class="difficulty-level"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="problem-text" class="problem-text">
+                <!-- Problem will be rendered here -->
+            </div>
+            
+            <div class="answer-section">
+                <input type="text" id="answer-input" placeholder="Enter your answer...">
+                <button id="submit-answer">Submit</button>
+            </div>
+            
+            <div id="feedback" class="feedback"></div>
+            
+            <div class="navigation-buttons">
+                <div class="nav-group">
+                    <button id="back-btn" class="secondary-btn">← Back to Subjects</button>
+                </div>
+                <div class="nav-group">
+                    <button id="hint-btn" class="secondary-btn">Hint</button>
+                    <button id="next-btn" class="primary-btn hidden">Next Problem</button>
+                </div>
+            </div>
+        </div>
+        
+                <div class="progress-container">
+                    <h3>Your Progress</h3>
+                    <div id="progress-stats">
+                        <div>Correct: <span id="correct-count">0</span></div>
+                        <div>Incorrect: <span id="incorrect-count">0</span></div>
+                        <div>Streak: <span id="streak-count">0</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add Questions Tab -->
+            <div id="add-questions-tab" class="tab-panel">
+                <h2>Add New Questions</h2>
+                <div class="rating-info">
+                    <h3>Difficulty Rating System (1-100)</h3>
+                    <ul>
+                        <li><strong>1-10:</strong> Elementary</li>
+                        <li><strong>11-20:</strong> Middle School</li>
+                        <li><strong>21-30:</strong> High School</li>
+                        <li><strong>31-40:</strong> Advanced High School</li>
+                        <li><strong>41-50:</strong> Early College</li>
+                        <li><strong>51-60:</strong> Middle College</li>
+                        <li><strong>61-70:</strong> Late College/Early Graduate</li>
+                        <li><strong>71-80:</strong> Graduate Level</li>
+                        <li><strong>81-90:</strong> PhD Qualifying Exam</li>
+                        <li><strong>91-100:</strong> Research Level</li>
+                    </ul>
+                </div>
+                
+                <form id="add-question-form" class="question-form">
+                    <div class="form-group">
+                        <label for="subject-select">Subject:</label>
+                        <select id="subject-select" required>
+                            <option value="">Select Subject</option>
+                            <option value="math">Mathematics</option>
+                            <option value="physics">Physics</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="topic-select">Topic:</label>
+                        <select id="topic-select" required>
+                            <option value="">Select Topic</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="question-input">Question (LaTeX supported):</label>
+                        <textarea id="question-input" placeholder="Enter the question here. Use LaTeX for math: $x^2 + 5x + 6$" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="answer-input-form">Answer:</label>
+                        <input type="text" id="answer-input-form" placeholder="Enter the correct answer" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="solution-input">Solution (LaTeX supported):</label>
+                        <textarea id="solution-input" placeholder="Enter the step-by-step solution" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags-selector">Tags:</label>
+                        <div class="tags-selector-container">
+                            <div class="tags-search-box">
+                                <input type="text" id="tags-search" placeholder="Search tags..." autocomplete="off">
+                                <div id="tags-dropdown" class="tags-dropdown hidden">
+                                    <!-- Available tags will be populated here -->
+                                </div>
+                            </div>
+                            <div class="selected-tags" id="selected-tags">
+                                <!-- Selected tags will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="difficulty-input">Suggested Difficulty (1-100):</label>
+                        <input type="number" id="difficulty-input" min="1" max="100" placeholder="Enter difficulty rating" required>
+                    </div>
+                    
+                    <button type="submit">Submit Question</button>
+                </form>
+                
+                <div id="submission-feedback" class="feedback"></div>
+            </div>
+            
+            <!-- Review Questions Tab -->
+            <div id="review-tab" class="tab-panel">
+                <div id="auth-section">
+                    <h2>Authentication Required</h2>
+                    <form id="login-form" class="login-form">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                    <div id="auth-feedback" class="feedback"></div>
+                </div>
+                
+                <div id="review-section" class="hidden">
+                    <h2>Review Pending Questions</h2>
+                    <div id="pending-questions">
+                        <!-- Pending questions will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="js/subjects.js"></script>
+    <script src="js/problems.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

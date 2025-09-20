@@ -472,7 +472,7 @@ h1 {
 }
 
 /* Buttons */
-button, .btn, #hint-btn, #next-btn, .back-to-subjects, .subject-btn {
+button, .btn, #hint-btn, #back-btn, #next-btn, .back-to-subjects, .subject-btn {
     padding: 10px 20px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -490,67 +490,72 @@ button, .btn, #hint-btn, #next-btn, .back-to-subjects, .subject-btn {
     text-decoration: none;
 }
 
-/* Submit button keeps its unique style */
-#submit-answer {
+/* Secondary buttons (back, hint, etc.) */
+.secondary-btn {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
     padding: 10px 20px;
-    border: 1px solid var(--success);
     border-radius: 4px;
     font-size: 16px;
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: var(--success);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 100px;
     text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-button:hover:not(:disabled), 
-.btn:hover:not(:disabled), 
-#hint-btn:hover:not(:disabled), 
-#next-btn:hover:not(:disabled), 
-.back-to-subjects:hover:not(:disabled),
-.subject-btn:hover:not(:disabled) {
-    background: var(--interactive-primary);
+.secondary-btn:hover:not(:disabled) {
+    background-color: var(--interactive-primary);
     color: var(--bg-primary);
+    border-color: var(--interactive-primary);
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.secondary-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+    background-color: var(--interactive-primary);
+    color: var(--bg-primary);
+}
+
+.secondary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+/* Primary button (submit, next) */
+.primary-btn, #submit-answer {
+    background-color: var(--interactive-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--interactive-primary);
+}
+
+.primary-btn:hover:not(:disabled),
 #submit-answer:hover:not(:disabled) {
-    opacity: 0.9;
+    background-color: var(--interactive-secondary);
+    border-color: var(--interactive-secondary);
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-button:active:not(:disabled), 
-.btn:active:not(:disabled), 
-#submit-answer:active:not(:disabled), 
-#hint-btn:active:not(:disabled), 
-#next-btn:active:not(:disabled), 
-.back-to-subjects:active:not(:disabled),
-.subject-btn:active:not(:disabled) {
+.primary-btn:active:not(:disabled),
+#submit-answer:active:not(:disabled) {
     transform: translateY(0);
     box-shadow: none;
 }
 
-button:disabled, 
-.btn:disabled, 
-#submit-answer:disabled, 
-#hint-btn:disabled, 
-#next-btn:disabled, 
-.back-to-subjects:disabled,
-.subject-btn:disabled {
+.primary-btn:disabled,
+#submit-answer:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    transform: none;
-    background: var(--bg-tertiary);
-    color: var(--text-secondary);
+    background-color: var(--bg-tertiary);
     border-color: var(--border-color);
+    color: var(--text-secondary);
 }
 
 /* Specific button styles */
