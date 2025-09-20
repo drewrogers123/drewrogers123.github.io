@@ -26,8 +26,6 @@ class MathPhysicsApp {
         // Next problem
         document.getElementById('next-btn').addEventListener('click', () => this.loadNewProblem());
         
-        // Hint button
-        document.getElementById('hint-btn').addEventListener('click', () => this.showHint());
         
         // Back button
         document.getElementById('back-btn').addEventListener('click', () => this.backToSubjects());
@@ -84,7 +82,6 @@ class MathPhysicsApp {
         const answerInput = document.getElementById('answer-input');
         const feedbackEl = document.getElementById('feedback');
         const nextBtn = document.getElementById('next-btn');
-        const hintBtn = document.getElementById('hint-btn');
         
         // Reset input and feedback
         answerInput.value = '';
@@ -98,7 +95,6 @@ class MathPhysicsApp {
         
         // Reset buttons
         nextBtn.classList.add('hidden');
-        hintBtn.disabled = false;
         
         // Get a new problem
         this.currentProblem = problemBank.getProblem(this.currentSubject, this.currentTopic);
@@ -269,9 +265,6 @@ class MathPhysicsApp {
         nextBtn.classList.remove('hidden');
         nextBtn.focus();
         
-        // Disable hint button
-        document.getElementById('hint-btn').disabled = true;
-        
         // Store problem attempt in history
         problemBank.userProgress.problemHistory.push({
             problemId: this.currentProblem.id,
@@ -294,19 +287,6 @@ class MathPhysicsApp {
             answerInput.focus();
             answerInput.select();
         }
-    }
-    
-    // Show a hint for the current problem
-    showHint() {
-        if (!this.currentProblem || !this.currentProblem.solution) return;
-        
-        // Disable hint button after first use
-        document.getElementById('hint-btn').disabled = true;
-        
-        // Show a simplified version of the solution as a hint
-        const feedbackEl = document.getElementById('feedback');
-        feedbackEl.textContent = 'Hint: ' + this.currentProblem.solution.split('.')[0] + '.';
-        feedbackEl.className = 'feedback';
     }
     
     // Go back to subjects screen
