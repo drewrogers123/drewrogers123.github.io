@@ -1,4 +1,4 @@
-// Disc Golf Rating Calculator - Web Version
+// Disc Golf Rating Calculator - Web Version with Proper Elo Algorithm
 console.log('Script loading...');
 
 // Check if XLSX is available
@@ -148,7 +148,7 @@ async function processExcelFile(file) {
 }
 
 function processDiscGolfData(data) {
-    console.log('Processing disc golf data...');
+    console.log('Processing disc golf data with proper Elo algorithm...');
 
     if (!data || !Array.isArray(data) || data.length < 2) {
         throw new Error('Invalid data format. Expected at least 2 rows of data.');
@@ -167,56 +167,196 @@ function processDiscGolfData(data) {
         throw new Error('No "Name" column found in the data');
     }
 
-    // Extract round data
+    // Transform wide format to long format (like Python pandas melt)
     const rounds = headers.slice(1);
-    const players = [];
+    const longData = [];
 
-    playerData.forEach((row, index) => {
-        if (row && row[nameIndex]) {
-            const player = {
-                name: row[nameIndex],
-                scores: row.slice(1).map(score => score || 0),
-                rating: 1500, // Starting rating
-                games: 0
-            };
-            players.push(player);
+    playerData.forEach(row => {
+        const playerName = row[nameIndex];
+        if (playerName) {
+            rounds.forEach((roundId, roundIndex) => {
+                const score = row[nameIndex + 1 + roundIndex];
+                if (score !== undefined && score !== null && score !== '') {
+                    longData.push({
+                        player: playerName,
+                        round_id: roundId,
+                        score: parseFloat(score),
+                        round_seq: roundIndex
+                    });
+                }
+            });
         }
     });
 
-    if (players.length === 0) {
-        throw new Error('No valid player data found');
+    if (longData.length === 0) {
+        throw new Error('No valid score data found');
     }
 
-    // Simplified Elo calculation
-    const results = {
-        finalRatings: [],
-        history: [],
-        snapshots: []
-    };
+    // Group by round sequence
+    const roundGroups = {};
+    longData.forEach(row => {
+        if (!roundGroups[row.round_seq]) {
+            roundGroups[row.round_seq] = [];
+        }
+        roundGroups[row.round_seq].push(row);
+    });
 
-    // Sort players by rating for final results
-    players.sort((a, b) => b.rating - a.rating);
+    // Elo calculation parameters
+    const START_RATING = 1500;
+    const BASE_K = 24;
+    const WEIGHTS = { "TR": 2, "CR": 1.5, "TN": 1.75 };
+    const USE_MOV = true;
 
-    players.forEach((player, index) => {
-        results.finalRatings.push({
+    // Initialize ratings
+    const ratings = {};
+    const historyRows = [];
+
+    // Process each round
+    Object.keys(roundGroups).sort((a, b) => parseInt(a) - parseInt(b)).forEach(seq => {
+        const group = roundGroups[seq];
+        const players = group.map(row => row.player);
+        const scores = group.map(row => row.score);
+        const roundId = group[0].round_id;
+
+        // Determine round type
+        const roundType = roundId.split('-')[0].trim();
+        const kRound = BASE_K * (WEIGHTS[roundType] || 1.0);
+
+        // Ensure everyone has a starting rating
+        players.forEach(player => {
+            if (!(player in ratings)) {
+                ratings[player] = START_RATING;
+            }
+        });
+
+        const n = players.length;
+        if (n <= 1) {
+            // No-op round
+            players.forEach((player, idx) => {
+                historyRows.push({
+                    round_seq: parseInt(seq),
+                    round_id: roundId,
+                    round_type: roundType,
+                    player: player,
+                    score: scores[idx],
+                    rating_pre: ratings[player],
+                    rating_post: ratings[player],
+                    delta: 0.0,
+                    K_effective: 0.0,
+                });
+            });
+            return;
+        }
+
+        // Create arrays for calculations
+        const R = players.map(player => ratings[player]);
+        const S = new Array(n).fill(0);
+        const E = new Array(n).fill(0);
+        const W_total = new Array(n).fill(0);
+
+        // Calculate expected scores and actual scores for each pair
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                if (i === j) continue;
+
+                const e_ij = expectedScore(R[i], R[j]);
+                E[i] += e_ij;
+
+                // Lower score is better in disc golf
+                let s_ij;
+                let margin;
+                if (scores[i] < scores[j]) {
+                    s_ij = 1.0;
+                    margin = scores[j] - scores[i];
+                } else if (scores[i] > scores[j]) {
+                    s_ij = 0.0;
+                    margin = scores[i] - scores[j];
+                } else {
+                    s_ij = 0.5;
+                    margin = 0.0;
+                }
+
+                S[i] += s_ij;
+
+                if (USE_MOV) {
+                    const ratingDiff = R[i] - R[j];
+                    const w_ij = movMultiplier(Math.max(0.0, margin), ratingDiff);
+                    W_total[i] += w_ij;
+                } else {
+                    W_total[i] += 1.0;
+                }
+            }
+        }
+
+        // Calculate new ratings
+        const new_R = [...R];
+        for (let i = 0; i < n; i++) {
+            const mov_w = USE_MOV ? (W_total[i] / (n - 1)) : 1.0;
+            const delta = kRound * mov_w * (S[i] - E[i]);
+            new_R[i] = R[i] + delta;
+        }
+
+        // Update ratings and history
+        players.forEach((player, idx) => {
+            const pre = ratings[player];
+            const post = new_R[idx];
+            ratings[player] = post;
+
+            historyRows.push({
+                round_seq: parseInt(seq),
+                round_id: roundId,
+                round_type: roundType,
+                player: player,
+                score: scores[idx],
+                rating_pre: pre,
+                rating_post: post,
+                delta: post - pre,
+                K_effective: kRound,
+            });
+        });
+    });
+
+    // Create final results - only show final ratings
+    const finalRatings = Object.entries(ratings)
+        .map(([player, rating]) => ({
+            player,
+            rating: Math.round(rating),
+            games: 1 // Simplified - would need to count actual games played
+        }))
+        .sort((a, b) => b.rating - a.rating)
+        .map((item, index) => ({
             rank: index + 1,
-            name: player.name,
-            rating: Math.round(player.rating),
-            games: player.games
-        });
-    });
+            player: item.player,
+            rating: item.rating,
+            games: item.games
+        }));
 
-    // Generate history (simplified)
-    players.forEach(player => {
-        results.history.push({
-            name: player.name,
-            rating: Math.round(player.rating),
-            change: Math.round(player.rating - 1500),
-            games: player.games
-        });
-    });
+    const history = historyRows
+        .filter(row => row.round_seq === Math.max(...historyRows.map(r => r.round_seq)))
+        .map(row => ({
+            player: row.player,
+            rating: Math.round(row.rating_post),
+            change: Math.round(row.rating_post - (ratings[row.player] - (row.rating_post - row.rating_pre))),
+            games: 1
+        }));
 
-    return results;
+    return {
+        finalRatings,
+        history,
+        snapshots: [] // Don't show snapshots for now
+    };
+}
+
+function expectedScore(r_i, r_j, cap = 300) {
+    let diff = r_j - r_i;
+    if (diff > cap) diff = cap;
+    else if (diff < -cap) diff = -cap;
+    return 1.0 / (1.0 + Math.pow(10.0, diff / 400.0));
+}
+
+function movMultiplier(margin, ratingDiff) {
+    if (margin <= 0) return 1.0;
+    return Math.log(1 + margin) * (2.2 / (0.001 * Math.abs(ratingDiff) + 2.2));
 }
 
 function displayResults(results) {
@@ -238,7 +378,7 @@ function displayResults(results) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${rating.rank}</td>
-                    <td>${rating.name}</td>
+                    <td>${rating.player}</td>
                     <td>${rating.rating}</td>
                     <td>${rating.games}</td>
                 `;
@@ -256,7 +396,7 @@ function displayResults(results) {
             results.history.forEach(player => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${player.name}</td>
+                    <td>${player.player}</td>
                     <td>${player.rating}</td>
                     <td>${player.change >= 0 ? '+' : ''}${player.change}</td>
                     <td>${player.games}</td>
@@ -276,7 +416,7 @@ function displayResults(results) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${rating.rank}</td>
-                    <td>${rating.name}</td>
+                    <td>${rating.player}</td>
                     <td>${rating.rating}</td>
                     <td>Final</td>
                 `;
