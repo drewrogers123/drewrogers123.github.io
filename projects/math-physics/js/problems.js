@@ -880,16 +880,28 @@ const problemBank = {
             });
         }
         
-        // Filter problems within ±10 difficulty levels of current (adjusted for 1-100 scale)
-        const minDifficulty = Math.max(1, this.userProgress.currentDifficulty - 10);
-        const maxDifficulty = Math.min(this.difficultyLevels, this.userProgress.currentDifficulty + 10);
-        
-        const filteredProblems = availableProblems.filter(problem => 
-            problem.difficulty >= minDifficulty && problem.difficulty <= maxDifficulty
+        // Get IDs of correctly answered problems
+        const correctProblemIds = new Set(
+            this.userProgress.problemHistory
+                .filter(attempt => attempt.correct)
+                .map(attempt => attempt.problemId)
         );
         
-        // If we have filtered problems, use them, otherwise use all available
-        const problemsToUse = filteredProblems.length > 0 ? filteredProblems : availableProblems;
+        // Filter problems within ±15 difficulty levels of current (adjusted for 1-100 scale)
+        // and exclude problems that were already answered correctly
+        const minDifficulty = Math.max(1, this.userProgress.currentDifficulty - 15);
+        const maxDifficulty = Math.min(this.difficultyLevels, this.userProgress.currentDifficulty + 15);
+        
+        const filteredProblems = availableProblems.filter(problem => 
+            problem.difficulty >= minDifficulty && 
+            problem.difficulty <= maxDifficulty &&
+            !correctProblemIds.has(problem.id)  // Exclude correctly answered problems
+        );
+        
+        // If we have filtered problems, use them, otherwise use all available (except correctly answered ones)
+        const problemsToUse = filteredProblems.length > 0 
+            ? filteredProblems 
+            : availableProblems.filter(problem => !correctProblemIds.has(problem.id));
         
         // Return a random problem
         if (problemsToUse.length > 0) {
