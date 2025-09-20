@@ -204,61 +204,7 @@ class MathPhysicsApp {
         messageEl.textContent = isCorrect ? '✅ Correct! 🎉' : '❌ Incorrect';
         feedbackEl.appendChild(messageEl);
         
-        // Show correct answer if wrong
-        if (!isCorrect) {
-            const correctAnswerEl = document.createElement('div');
-            correctAnswerEl.className = 'correct-answer';
-            correctAnswerEl.innerHTML = `The correct answer is: <span class="answer">${this.currentProblem.answer}</span>`;
-            feedbackEl.appendChild(correctAnswerEl);
-        }
-        
-        // Show solution if available
-        if (this.currentProblem.solution) {
-            const solutionEl = document.createElement('div');
-            solutionEl.className = 'solution';
-            solutionEl.style.marginTop = '10px';
-            
-            const solutionTitle = document.createElement('div');
-            solutionTitle.className = 'solution-title';
-            solutionTitle.textContent = 'Solution:';
-            solutionEl.appendChild(solutionTitle);
-            
-            const solutionContent = document.createElement('div');
-            solutionContent.className = 'solution-content';
-            
-            // Process the solution text to handle both inline ($) and display ($$) LaTeX
-            const parts = this.currentProblem.solution.split(/(\$\$.*?\$\$|\$.*?\$)/g);
-            parts.forEach(part => {
-                if (part) { // Filter out empty strings from split
-                    let isDisplay = false;
-                    let latexExpr = '';
-
-                    if (part.startsWith('$$') && part.endsWith('$$')) {
-                        isDisplay = true;
-                        latexExpr = part.slice(2, -2);
-                    } else if (part.startsWith('$') && part.endsWith('$')) {
-                        isDisplay = false;
-                        latexExpr = part.slice(1, -1);
-                    }
-
-                    if (latexExpr) {
-                        const container = document.createElement(isDisplay ? 'div' : 'span');
-                        solutionContent.appendChild(container);
-                        try {
-                            katex.render(latexExpr, container, { throwOnError: false, displayMode: isDisplay });
-                        } catch (e) {
-                            console.error('KaTeX rendering error:', e);
-                            container.textContent = latexExpr;
-                        }
-                    } else {
-                        solutionContent.appendChild(document.createTextNode(part));
-                    }
-                }
-            });
-            
-            solutionEl.appendChild(solutionContent);
-            feedbackEl.appendChild(solutionEl);
-        }
+        // Don't show the correct answer or solution
         
         // Show next button
         const nextBtn = document.getElementById('next-btn');
