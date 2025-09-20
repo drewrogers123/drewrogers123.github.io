@@ -138,27 +138,28 @@ const problemBank = {
                     tags: ["linear equations"]
                 },
                 {
-                    id: 'alg1',
-                    difficulty: 15,
-                    type: 'short-answer',
-                    question: "Solve for x: $2x + 5 = 15$",
-                    answer: "5",
-                    solution: "Subtract 5 from both sides to get $2x = 10$. Divide by 2 to get $x = 5$.",
-                    tags: ["linear equations"]
-                },
-                {
                     id: 'alg2',
                     difficulty: 25,
+                    type: 'multiple-choice',
                     question: "Factor the quadratic: $x^2 - 5x + 6$",
-                    answer: "(x-2)(x-3)",
+                    answer1: "(x+2)(x+3)",
+                    answer2: "(x-1)(x-6)",
+                    answer3: "(x-2)(x-3)",
+                    answer4: "(x+1)(x+6)",
+                    correct: "answer3",
                     solution: "Find two numbers that multiply to 6 and add to -5. The numbers are -2 and -3, so the factored form is $(x-2)(x-3)$.",
                     tags: ["factoring", "quadratics"]
                 },
                 {
                     id: 'alg3',
                     difficulty: 35,
+                    type: 'multiple-choice',
                     question: "Solve the inequality: $|2x - 1| \leq 5$",
-                    answer: "-2<=x<=3",
+                    answer1: "-3<=x<=2",
+                    answer2: "-2<=x<=3",
+                    answer3: "x<=-2 or x>=3",
+                    answer4: "x<=-3 or x>=2",
+                    correct: "answer2",
                     solution: "The inequality $|2x - 1| \leq 5$ can be written as $-5 \leq 2x - 1 \leq 5$. Add 1 to all parts to get $-4 \leq 2x \leq 6$. Divide by 2 to get $-2 \leq x \leq 3$.",
                     tags: ["absolute value", "inequalities"]
                 }
@@ -167,23 +168,39 @@ const problemBank = {
                 {
                     id: 'calc1',
                     difficulty: 45,
+                    type: 'multiple-choice',
                     question: "Find the derivative of $f(x) = 3x^2 + 2x - 5$",
-                    answer: "6x+2",
-                    solution: "Using the power rule, the derivative of $3x^2$ is $6x$, the derivative of $2x$ is $2$, and the derivative of a constant is 0. So, $f'(x) = 6x + 2$."
+                    answer1: "6x + 2",
+                    answer2: "3x + 2",
+                    answer3: "6x^2 + 2x",
+                    answer4: "3x^2 + 2",
+                    correct: "answer1",
+                    solution: "Using the power rule, the derivative of $3x^2$ is $6x$, the derivative of $2x$ is $2$, and the derivative of a constant is 0. So, $f'(x) = 6x + 2$.",
+                    tags: ["derivatives", "calculus"]
                 },
                 {
                     id: 'calc2',
                     difficulty: 48,
+                    type: 'multiple-choice',
                     question: "Evaluate the definite integral: $$\int_{0}^{1} (x^2 + 1) dx$$",
-                    answer: "4/3",
+                    answer1: "2/3",
+                    answer2: "4/3",
+                    answer3: "5/3",
+                    answer4: "2",
+                    correct: "answer2",
                     solution: "The integral of $x^2$ is $\frac{x^3}{3}$ and the integral of 1 is $x$. Evaluating from 0 to 1 gives $(\frac{1^3}{3} + 1) - (\frac{0^3}{3} + 0) = \frac{1}{3} + 1 = \frac{4}{3}$.",
                     tags: ["definite integrals", "early college"]
                 },
                 {
                     id: 'calc3',
                     difficulty: 52,
+                    type: 'multiple-choice',
                     question: "Find the limit: $\lim_{x \to 0} \frac{\sin(x)}{x}$",
-                    answer: "1",
+                    answer1: "0",
+                    answer2: "1",
+                    answer3: "Undefined",
+                    answer4: "Infinity",
+                    correct: "answer2",
                     solution: "This is a standard limit that evaluates to 1. It can be proven using L'Hôpital's Rule or the Squeeze Theorem.",
                     tags: ["limits", "trigonometric limits", "middle college"]
                 }
@@ -194,8 +211,13 @@ const problemBank = {
                 {
                     id: 'mech1',
                     difficulty: 25,
+                    type: 'multiple-choice',
                     question: "A car accelerates from rest at $2 \\text{ m/s}^2$ for 5 seconds. What is its final velocity?",
-                    answer: "10",
+                    answer1: "5 m/s",
+                    answer2: "7.5 m/s",
+                    answer3: "10 m/s",
+                    answer4: "12.5 m/s",
+                    correct: "answer3",
                     units: "m/s",
                     solution: "Using $v = u + at$ where $u=0$, $a=2\\text{ m/s}^2$, $t=5\\text{ s}$: $v = 0 + (2)(5) = 10\\text{ m/s}$.",
                     tags: ["kinematics", "constant acceleration"]

@@ -1057,6 +1057,76 @@ button:hover {
     margin: 20px 0;
 }
 
+/* Question Type Toggle */
+#question-type {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Multiple Choice Inputs */
+.mc-option-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+
+.mc-option-input:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--nav-primary);
+}
+
+.mc-option-input input[type="radio"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    cursor: pointer;
+}
+
+.mc-option-input input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.mc-option-input input[type="text"]:focus {
+    outline: none;
+    border-color: var(--nav-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Form group specific styles */
+#short-answer-group,
+#multiple-choice-group {
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Hide/show form sections based on question type */
+#question-type[value="short-answer"] ~ #short-answer-group {
+    display: block;
+}
+
+#question-type[value="multiple-choice"] ~ #multiple-choice-group {
+    display: block;
+}
+
 /* Multiple Choice Styles */
 .mc-section {
     margin: 20px 0;
@@ -1066,28 +1136,32 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .mc-option {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    padding: 14px 18px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .mc-option:hover {
-    background-color: #e9ecef;
-    border-color: #adb5bd;
+    background-color: var(--bg-tertiary);
+    border-color: var(--nav-primary);
 }
 
 .mc-option input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 12px;
     cursor: pointer;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
 }
 
 .mc-option label {
@@ -1095,39 +1169,83 @@ button:hover {
     flex-grow: 1;
     margin: 0;
     font-size: 1rem;
-    color: #333;
+    color: var(--text-primary);
+    line-height: 1.5;
 }
 
 .mc-option input[type="radio"]:checked + label {
-    font-weight: 600;
-    color: var(--primary-color);
+    font-weight: 500;
+    color: var(--nav-primary);
 }
 
 .mc-option input[type="radio"]:checked {
-    accent-color: var(--primary-color);
+    accent-color: var(--nav-primary);
+}
+
+/* Selected state */
+.mc-option.selected {
+    background-color: var(--bg-tertiary);
+    border-color: var(--nav-primary);
+    box-shadow: 0 0 0 1px var(--nav-primary);
+}
+
+/* Correct/Incorrect feedback */
+.mc-option.correct {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: var(--success);
+}
+
+.mc-option.incorrect {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: var(--error);
 }
 
 .mc-submit-btn {
     display: block;
     width: 100%;
-    padding: 12px 20px;
-    background-color: var(--primary-color);
+    padding: 14px 20px;
+    background-color: var(--nav-primary);
     color: white;
     border: none;
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.mc-submit-btn:hover {
-    background-color: #3a5a80;
+.mc-submit-btn:hover:not(:disabled) {
+    background-color: var(--nav-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mc-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .mc-submit-btn:disabled {
-    background-color: #cccccc;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
     cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Dark theme adjustments */
+[data-theme*="dark"] .mc-option {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme*="dark"] .mc-option:hover {
+    background-color: var(--bg-tertiary);
+}
+
+[data-theme*="dark"] .mc-option input[type="radio"] {
+    filter: brightness(1.2);
 }
 
 .form-group {

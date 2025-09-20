@@ -62,6 +62,20 @@ class TabManager {
         const form = document.getElementById('add-question-form');
         const subjectSelect = document.getElementById('subject-select');
         const topicSelect = document.getElementById('topic-select');
+        const questionType = document.getElementById('question-type');
+        const shortAnswerGroup = document.getElementById('short-answer-group');
+        const multipleChoiceGroup = document.getElementById('multiple-choice-group');
+
+        // Toggle between question types
+        questionType.addEventListener('change', (e) => {
+            if (e.target.value === 'short-answer') {
+                shortAnswerGroup.style.display = 'block';
+                multipleChoiceGroup.style.display = 'none';
+            } else {
+                shortAnswerGroup.style.display = 'none';
+                multipleChoiceGroup.style.display = 'block';
+            }
+        });
 
         // Update topics when subject changes
         subjectSelect.addEventListener('change', () => {
@@ -227,22 +241,63 @@ class TabManager {
     }
 
     submitQuestion() {
-        const formData = {
+        const questionType = document.getElementById('question-type').value;
+        const questionData = {
             id: 'pending_' + Date.now(),
             subject: document.getElementById('subject-select').value,
             topic: document.getElementById('topic-select').value,
             question: document.getElementById('question-input').value,
-            answer: document.getElementById('answer-input-form').value,
             solution: document.getElementById('solution-input').value,
-            tags: [...this.selectedTags], // Use selected tags array
+            tags: [...this.selectedTags],
             difficulty: parseInt(document.getElementById('difficulty-input').value),
+            type: questionType,
             status: 'pending',
             submittedAt: new Date().toISOString()
         };
 
-        // Validate form
-        if (!formData.subject || !formData.topic || !formData.question || 
-            !formData.answer || !formData.solution || !formData.difficulty) {
+        // Handle different question types
+        if (questionType === 'short-answer') {
+            const answer = document.getElementById('answer-input-form').value.trim();
+            if (!answer) {
+                this.showFeedback('submission-feedback', 'Please enter an answer.', 'error');
+                return;
+            }
+            questionData.answer = answer;
+        } else { // Multiple choice
+            const correctAnswer = document.querySelector('input[name="correct-answer"]:checked');
+            const answerInputs = document.querySelectorAll('.mc-answer');
+            let hasEmptyFields = false;
+            
+            // Check for empty answer choices
+            answerInputs.forEach(input => {
+                if (!input.value.trim()) hasEmptyFields = true;
+            });
+            
+            if (hasEmptyFields) {
+                this.showFeedback('submission-feedback', 'Please fill in all answer choices.', 'error');
+                return;
+            }
+            
+            if (!correctAnswer) {
+                this.showFeedback('submission-feedback', 'Please select the correct answer.', 'error');
+                return;
+            }
+            
+            // Add multiple choice answers
+            answerInputs.forEach((input, index) => {
+                const answerNum = index + 1;
+                questionData[`answer${answerNum}`] = input.value.trim();
+                
+                // Mark the correct answer
+                if (answerNum === parseInt(correctAnswer.value)) {
+                    questionData.correct = `answer${answerNum}`;
+                }
+            });
+        }
+
+        // Validate required fields
+        if (!questionData.subject || !questionData.topic || !questionData.question || 
+            !questionData.solution || !questionData.difficulty) {
             this.showFeedback('submission-feedback', 'Please fill in all required fields.', 'error');
             return;
         }
@@ -253,17 +308,23 @@ class TabManager {
         }
 
         // Add to pending questions
-        this.pendingQuestions.push(formData);
+        this.pendingQuestions.push(questionData);
         localStorage.setItem('pendingQuestions', JSON.stringify(this.pendingQuestions));
 
         // Show success message
         this.showFeedback('submission-feedback', 'Question submitted successfully! It will be reviewed before being added to the database.', 'success');
 
         // Reset form
-        document.getElementById('add-question-form').reset();
+        const form = document.getElementById('add-question-form');
+        form.reset();
         this.selectedTags = [];
         this.updateSelectedTagsDisplay();
         this.updateTopicOptions('');
+        
+        // Reset question type to short answer
+        document.getElementById('question-type').value = 'short-answer';
+        document.getElementById('short-answer-group').style.display = 'block';
+        document.getElementById('multiple-choice-group').style.display = 'none';
     }
 
     // Authentication
