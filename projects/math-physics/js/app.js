@@ -130,38 +130,17 @@ class MathPhysicsApp {
         
         try {
             // First, clear any existing content
-            problemText.innerHTML = '';
+            problemText.innerHTML = problem.question;
             
-            // Process the question text to handle both inline ($) and display ($$) LaTeX
-            const parts = problem.question.split(/(\$\$.*?\$\$|\$.*?\$)/g);
-
-            parts.forEach(part => {
-                if (part) { // Filter out empty strings from split
-                    let isDisplay = false;
-                    let latexExpr = '';
-
-                    if (part.startsWith('$$') && part.endsWith('$$')) {
-                        isDisplay = true;
-                        latexExpr = part.slice(2, -2);
-                    } else if (part.startsWith('$') && part.endsWith('$')) {
-                        isDisplay = false;
-                        latexExpr = part.slice(1, -1);
-                    }
-
-                    if (latexExpr) {
-                        const container = document.createElement(isDisplay ? 'div' : 'span');
-                        container.className = isDisplay ? 'latex-display' : 'latex-inline';
-                        problemText.appendChild(container);
-                        try {
-                            katex.render(latexExpr, container, { throwOnError: false, displayMode: isDisplay });
-                        } catch (e) {
-                            console.error('KaTeX rendering error:', e);
-                            container.textContent = latexExpr;
-                        }
-                    } else {
-                        problemText.appendChild(document.createTextNode(part));
-                    }
-                }
+            // Use KaTeX auto-render to process all LaTeX in the problem text
+            renderMathInElement(problemText, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
             });
             
         } catch (e) {
@@ -315,6 +294,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize KaTeX auto-render
     window.katex = katex;
     
-    // Create and initialize the app
+    // Configure KaTeX auto-render
+    document.addEventListener('DOMContentLoaded', function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError: false
+        });
+    });
+    
+    // Start the application
     window.app = new MathPhysicsApp();
 });
