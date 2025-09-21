@@ -750,7 +750,7 @@ const problemBank = {
                     id: 'stats1',
                     difficulty: 25,
                     type: 'multiple-choice',
-                    question: 'What is the mean of the following dataset? $\\{2, 4, 6, 8, 10\\}$',
+                    question: 'What is the mean of the following dataset? $$\\{2, 4, 6, 8, 10\\}$$',
                     answer1: '5',
                     answer2: '6',
                     answer3: '7',
