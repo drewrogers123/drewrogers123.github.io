@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Drew Rogers</title>
+    <link rel="stylesheet" href="css/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to research page */
+        .research-section {
+            padding: 80px 0;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .research-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .research-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .research-meta {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .research-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>Drew Rogers</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="research-section">
+            <div class="container">
+                <h2>Research</h2>
+                <p>My academic research spans theoretical physics, with a focus on gauge theory, dark matter, and cosmology. Below are some highlights of my work.</p>
+                
+                <div class="research-grid">
+                    <div class="research-card">
+                        <h3>Gauge Theory and Dark Matter</h3>
+                        <div class="research-meta">Theoretical Physics | 2023</div>
+                        <p>Investigation of dark matter candidates within the framework of non-abelian gauge theories, focusing on their phenomenological implications.</p>
+                        <div class="research-links">
+                            <a href="#" class="btn btn-outline">Read Paper</a>
+                            <a href="#" class="btn btn-outline">View Presentation</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>Cosmological Models</h3>
+                        <div class="research-meta">Theoretical Cosmology | 2022</div>
+                        <p>Analysis of alternative cosmological models and their consistency with current observational data from CMB and large-scale structure.</p>
+                        <div class="research-links">
+                            <a href="#" class="btn btn-outline">Read Paper</a>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>Chaos in General Relativity</h3>
+                        <div class="research-meta">Mathematical Physics | 2021</div>
+                        <p>Numerical and analytical study of chaotic behavior in general relativistic systems and its implications for black hole physics.</p>
+                        <div class="research-links">
+                            <a href="#" class="btn btn-outline">Read Abstract</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-padding bg-light">
+            <div class="container">
+                <h3>Research Interests</h3>
+                <ul style="columns: 2; list-style-type: none; padding: 0;">
+                    <li>✓ Gauge Theory</li>
+                    <li>✓ Dark Matter</li>
+                    <li>✓ Cosmology</li>
+                    <li>✓ General Relativity</li>
+                    <li>✓ Chaos Theory</li>
+                    <li>✓ Mathematical Physics</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Interested in collaborating or have questions about my research?</p>
+                    <p><a href="mailto:rogersdrew0123@gmail.com">rogersdrew0123@gmail.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="https://github.com/drewrogers123" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Drew Rogers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/homepage.js"></script>
+</body>
+</html>
